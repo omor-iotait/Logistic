@@ -23,8 +23,8 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Add Station</a></li>
-                            <li><a href="#">Station List</a></li>
+                            <li><a href="stations/add.php">Add Station</a></li>
+                            <li><a href="stations/view.php">Station List</a></li>
                         </ul>
                     </li>
 
