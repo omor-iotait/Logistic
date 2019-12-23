@@ -10,9 +10,8 @@ include(ROOT_PATH . "admin/includes/head.php");
 <div class="wrapper">
     <div class="container">
         <div class="row">
-            <?php  echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']?>
             <!--/.span3-->
-            <div class="span9">
+            <div class="span12">
                 <div class="content">
 
                     <div class="module">
@@ -217,7 +216,7 @@ include(ROOT_PATH . "admin/includes/head.php");
 </div>
 <!--/.wrapper-->
 
-<?php include(ROOT_PATH . "admin/includes/script_file.php"); ?>
+<?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
 
 </body>
 </html>

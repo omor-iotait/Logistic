@@ -2,12 +2,12 @@
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="index.php">Admin Dashboard
+                <i class="icon-reorder shaded"></i></a><a class="brand" href="<?php echo BASE_URL; ?>/admin/index.php">Admin Dashboard
             </a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
                 <ul class="nav nav-icons">
 
-                    <li class="active"><a href="index.php"><i class="menu-icon icon-dashboard"></i>Dashboard
+                    <li class="active"><a href="<?php echo BASE_URL; ?>/admin/index.php"><i class="menu-icon icon-dashboard"></i>Dashboard
                         </a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer
@@ -50,7 +50,7 @@
 
                 <ul class="nav pull-right">
                     <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../images/user.png" class="nav-avatar"/>
+                            <img src="<?php echo BASE_URL; ?>/assets/images/user.png" class="nav-avatar"/>
                             <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Your Profile</a></li>
