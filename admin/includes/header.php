@@ -1,67 +1,42 @@
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="<?php echo BASE_URL; ?>/admin/index.php">Admin Dashboard
-            </a>
-            <div class="nav-collapse collapse navbar-inverse-collapse">
-                <ul class="nav nav-icons">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+        </li>
 
-                    <li class="active"><a href="<?php echo BASE_URL; ?>/admin/index.php"><i class="menu-icon icon-dashboard"></i>Dashboard
-                        </a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Add Customer</a></li>
-                            <li><a href="#">Customer List</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Station
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="stations/add.php">Add Station</a></li>
-                            <li><a href="stations/view.php">Station List</a></li>
-                        </ul>
-                    </li>
+    </ul>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Driver
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Add Driver</a></li>
-                            <li><a href="#">Driver List</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tracking Number
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Add Tracking Number</a></li>
-                            <li><a href="#">Tracking List</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <ul class="nav pull-right">
-                    <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?php echo BASE_URL; ?>/assets/images/user.png" class="nav-avatar"/>
-                            <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Your Profile</a></li>
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <!-- SEARCH FORM -->
+    <!--<form class="form-inline ml-3">
+        <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
-            <!-- /.nav-collapse -->
         </div>
-    </div>
-    <!-- /navbar-inner -->
-</div>
+    </form>-->
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="fa fa-bell"></i>
+                <span class="badge badge-warning navbar-badge">User</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <span class="dropdown-item dropdown-header">User</span>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                    <i class="fa fa-users mr-2"></i>
+                    <span class="float-right text-muted text-sm">Logout</span>
+                </a>
+
+                <div class="dropdown-divider"></div>
+            </div>
+        </li>
+    </ul>
+</nav>

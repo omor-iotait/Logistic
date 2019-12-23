@@ -20,28 +20,12 @@ include(ROOT_PATH . "admin/includes/head.php");
                         </div>
                         <div class="module-body">
 
-                            <div class="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>Warning!</strong> Something fishy here!
-                            </div>
-                            <div class="alert alert-error">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>Oh snap!</strong> Whats wrong with you?
-                            </div>
-                            <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>Well done!</strong> Now you are listening me
-                            </div>
-
-
-                            <br/>
-
                             <form class="form-horizontal row-fluid">
                                 <div class="control-group">
-                                    <label class="control-label" for="basicinput">Basic Input</label>
+                                    <label class="control-label" for="username">Username</label>
                                     <div class="controls">
-                                        <input type="text" id="basicinput" placeholder="Type something here..."
-                                               class="span8">
+                                        <input type="text" id="username" placeholder="Type username"
+                                               class="span8" required>
                                         <span class="help-inline">Minimum 5 Characters</span>
                                     </div>
                                 </div>
