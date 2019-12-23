@@ -2,9 +2,12 @@
 <html lang="en">
 
 <?php require_once("../includes/configure.php");
-include "includes/head.php";?>
+include(ROOT_PATH . "includes/db.php");
+include(ROOT_PATH . "admin/includes/head.php");?>
 <body>
-<?php include "includes/header.php";?>
+<?php
+include(ROOT_PATH . "admin/includes/header.php");
+?>
 <div class="wrapper">
     <div class="container">
         <div class="row">
@@ -83,7 +86,7 @@ include "includes/head.php";?>
 </div>
 <!--/.wrapper-->
 
-<?php include "includes/scripts_file.php";?>
+<?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
 
 </body>
 </html>

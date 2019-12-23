@@ -2,11 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3732ca05-6bfe-4c7a-97ea-9f49efe0326d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/includes/configure.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/includes/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/head.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/scripts_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/scripts_file.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/stations/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/css/bootstrap-responsive.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bootstrap/css/bootstrap-responsive.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/img/glyphicons-halflings-white.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bootstrap/img/glyphicons-halflings-white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/img/glyphicons-halflings.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bootstrap/img/glyphicons-halflings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/css/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icons/css/font-awesome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/font/fontawesome-webfont3294.eot" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icons/font/fontawesome-webfont3294.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/font/fontawesome-webfont3294.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icons/font/fontawesome-webfont3294.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/font/fontawesome-webfont3294.woff" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icons/font/fontawesome-webfont3294.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/icons/font/fontawesome-webfontd41d.eot" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icons/font/fontawesome-webfontd41d.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/img.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/jquery-ui/picker.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/jquery-ui/picker.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/datatables/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/datatables/jquery.dataTables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/flot/jquery.flot.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/flot/jquery.flot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/flot/jquery.flot.pie.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/flot/jquery.flot.pie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/flot/jquery.flot.resize.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/flot/jquery.flot.resize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/jquery-1.9.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/jquery-1.9.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/jquery-ui-1.10.1.custom.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/jquery-ui-1.10.1.custom.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +61,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\xampp\htdocs\logistic\assets" />
       <recent name="G:\xampp\htdocs\logistic\admin" />
     </key>
   </component>
@@ -64,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577078634808</updated>
-      <workItem from="1577078635983" duration="6855000" />
+      <workItem from="1577078635983" duration="8263000" />
     </task>
     <servers />
   </component>
