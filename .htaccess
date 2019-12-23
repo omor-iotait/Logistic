@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteRule "^api/tracking-list$" "api/tracking-list.php"
+
+RewriteRule "^api/tracking-number$" "api/tracking-number.php"
+
+RewriteRule "^api/tracking-list-test$" "api/tracking-list-test.php"
+
+RewriteRule "^api/tracking-number-test$" "api/tracking-number-test.php"

@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+
+    }
+  },
+  "require": {
+    "phpoffice/phpexcel": "^1.8",
+    "phpoffice/phpspreadsheet": "^1.10",
+    "ext-gd": "*"
+  }
+}
