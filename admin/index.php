@@ -3,90 +3,111 @@
 
 <?php require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
-include(ROOT_PATH . "admin/includes/head.php");?>
-<body>
-<?php
-include(ROOT_PATH . "admin/includes/header.php");
-?>
+include(ROOT_PATH . "admin/includes/head.php"); ?>
+
+
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-    <div class="container">
-        <div class="row">
-            <!--/.span3-->
-            <div class="span12">
-                <div class="content">
-                    <div class="btn-controls">
-                        <div class="btn-box-row row-fluid">
-                            <a href="#" class="btn-box big span3"><i class=" icon-random"></i><b>65%</b>
-                                <p class="text-muted">
-                                    Growth</p>
-                            </a>
 
-                            <a href="#" class="btn-box big span3"><i class="icon-user"></i><b>15</b>
-                                <p class="text-muted">
-                                    New Users</p>
-                            </a>
+    <!-- Navbar -->
+    <?php
+    include(ROOT_PATH . "admin/includes/header.php");
+    include(ROOT_PATH . "admin/includes/sidebar.php");
+    ?>
 
-                            <a href="#" class="btn-box big span3"><i class="icon-money"></i><b>15,152</b>
-                                <p class="text-muted">
-                                    Profit</p>
-                            </a>
-
-                            <a href="#" class="btn-box big span3"><i class="icon-money"></i><b>15,152</b>
-                                <p class="text-muted">
-                                    Profit</p>
-                            </a>
-                        </div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item active"><a href="#">Dashboard</a></li>
+                        </ol>
                     </div>
-                    <!--/#btn-controls-->
-
-                    <!--/.module-->
-
-                    <div class="module">
-                        <div class="module-head">
-                            <h3>
-                                Table</h3>
-                        </div>
-                        <div class="module-body table">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Email</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Mary</td>
-                                    <td>Moe</td>
-                                    <td>mary@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>July</td>
-                                    <td>Dooley</td>
-                                    <td>july@example.com</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!--/.module-->
                 </div>
-                <!--/.content-->
             </div>
-            <!--/.span9-->
         </div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <!--<div class="row">
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>150</h3>
+
+                                <p>New Orders</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                                <p>Bounce Rate</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>User Registrations</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>65</h3>
+
+                                <p>Unique Visitors</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </section>
     </div>
-    <!--/.container-->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2019 <a href="#">Amber <Logistic></Logistic></a>.</strong>
+        All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
 </div>
-<!--/.wrapper-->
+<!-- ./wrapper -->
 
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
-
 </body>
+
+
 </html>

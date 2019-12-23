@@ -1,11 +1,31 @@
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link type="text/css" href="<?php echo BASE_URL; ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="<?php echo BASE_URL; ?>assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link type="text/css" href="<?php echo BASE_URL; ?>assets/css/theme.css" rel="stylesheet">
-    <link type="text/css" href="<?php echo BASE_URL; ?>assets/images/icons/css/font-awesome.css" rel="stylesheet">
-    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-          rel='stylesheet'>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
+
+
