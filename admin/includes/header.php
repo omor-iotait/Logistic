@@ -21,18 +21,19 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">User</span>
+                <span class="badge badge-warning navbar-badge"><?php echo Session::get('admin');?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">User</span>
-                <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
                     <i class="fa fa-users mr-2"></i>
-                    <span class="float-right text-muted text-sm">Logout</span>
+                    <span class="float-right text-muted text-sm">Login as <?php echo Session::get('admin');?></span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="logout.php" class="dropdown-item">
+                    <button class="btn btn-primary">Logout</button>
                 </a>
 
                 <div class="dropdown-divider"></div>

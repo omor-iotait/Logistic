@@ -3,7 +3,15 @@
 
 <?php require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
-include(ROOT_PATH . "admin/includes/head.php"); ?>
+include(ROOT_PATH . "classes/Session.php");
+Session::checkSession();
+if (isset($_GET['action']) && $_GET['action'] == "logout") {
+    Session::destroy();
+}
+$dashboard_sidebar = "active";
+$title = "Dashboard | Admin";
+include(ROOT_PATH . "admin/includes/head.php");
+?>
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -93,20 +101,21 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
             </div>
         </section>
     </div>
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="#">Amber <Logistic></Logistic></a>.</strong>
-        All rights reserved.
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
 </div>
-<!-- ./wrapper -->
 
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<?php
+if (@$_SESSION['success'])
+{
+    ?>
+    <script>
+        Swal.fire('Success!', '<?php echo $_SESSION['success'];?>', 'success');
+    </script>
+    <?php
+    unset($_SESSION['success']);
+}
+?>
 </body>
 
 
