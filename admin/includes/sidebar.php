@@ -14,16 +14,16 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                <li class="nav-item ">
+                    <a href="<?php  echo BASE_URL; ?>admin/index.php" class="nav-link <?php echo @$dashboard_sidebar;?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview <?php echo @$customer_menu;?>">
+                    <a href="#" class="nav-link <?php echo @$customer_sidebar;?>">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Customer
@@ -32,13 +32,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/customers/add.php" class="nav-link active">
+                            <a href="<?php  echo BASE_URL; ?>admin/customers/add.php" class="nav-link <?php echo @$customer_add;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p><small>Add Customer</small></p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/customers/view.php" class="nav-link">
+                            <a href="<?php  echo BASE_URL; ?>admin/customers/view.php" class="nav-link <?php echo @$customer_view;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Customer List</p>
                             </a>
@@ -46,8 +46,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item has-treeview <?php echo @$station_menu;?>">
+                    <a href="#" class="nav-link <?php echo @$station_sidebar;?>">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Station
@@ -56,13 +56,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/stations/add.php" class="nav-link ">
+                            <a href="<?php  echo BASE_URL; ?>admin/stations/add.php" class="nav-link <?php echo @$station_add;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Add Station</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/stations/view.php" class="nav-link">
+                            <a href="<?php  echo BASE_URL; ?>admin/stations/view.php" class="nav-link <?php echo @$station_view;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Station List</p>
                             </a>
@@ -77,7 +77,7 @@
                             <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview ">
                         <li class="nav-item">
                             <a href="<?php  echo BASE_URL; ?>admin/drivers/add.php" class="nav-link ">
                                 <i class="fa fa-circle nav-icon"></i>

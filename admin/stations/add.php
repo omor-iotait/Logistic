@@ -1,206 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 require_once("../../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
+include(ROOT_PATH . "classes/Session.php");
+
+Session::checkSession();
+if (isset($_GET['action']) && $_GET['action'] == "logout") {
+    Session::destroy();
+}
+$station_sidebar = "active";
+$station_add = "active";
+$station_menu = "menu-open";
+$title = "Station Add | Admin";
+
+if (@$_POST['submit']) {
+    $username = mysqli_real_escape_string($con, $_POST['username']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $password = md5($password);
+    $unique_id = mysqli_real_escape_string($con, $_POST['unique_id']);
+    $name = mysqli_real_escape_string($con, $_POST['name']);
+    $primary_email = mysqli_real_escape_string($con, $_POST['primary_email']);
+    $secondary_email = mysqli_real_escape_string($con, $_POST['secondary_email']);
+    $contact_number = mysqli_real_escape_string($con, $_POST['contact_number']);
+    $country = mysqli_real_escape_string($con, $_POST['country']);
+    $state = mysqli_real_escape_string($con, $_POST['state']);
+    $city = mysqli_real_escape_string($con, $_POST['city']);
+    $post_code = mysqli_real_escape_string($con, $_POST['post_code']);
+    $address = mysqli_real_escape_string($con, $_POST['address']);
+
+    $query = "INSERT INTO stations(username,password,unique_id,name,primary_email,secondary_email,contact_number,country,state,city,post_code,address) 
+VALUES('$username','$password','$unique_id','$name','$primary_email','$secondary_email','$contact_number','$country','$state','$city','$post_code','$address')";
+    if ($con->query($query) === TRUE) {
+        $_SESSION['success'] = "New Station info created successfully";
+        header("location:".BASE_URL."admin/stations/view.php");
+        exit(0);
+    } else {
+        $_SESSION['error'] = "Station info Not Inserted!";
+        echo mysqli_error();
+
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php
 include(ROOT_PATH . "admin/includes/head.php");
- ?>
-<body>
-<?php include(ROOT_PATH . "admin/includes/header.php"); ?>
+?>
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-    <div class="container">
-        <div class="row">
-            <!--/.span3-->
-            <div class="span12">
-                <div class="content">
+    <?php
+    include(ROOT_PATH . "admin/includes/header.php");
+    include(ROOT_PATH . "admin/includes/sidebar.php");
+    ?>
+    <div class="content-wrapper">
+        <br>
+        <section class="content">
+            <div class="container-fluid">
 
-                    <div class="module">
-                        <div class="module-head">
-                            <h3>Forms</h3>
-                        </div>
-                        <div class="module-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title"> Add Station</h3>
+                            </div>
+                            <form role="form" action="#" method="post">
+                                <div class="card-body">
 
-                            <form class="form-horizontal row-fluid">
-                                <div class="control-group">
-                                    <label class="control-label" for="username">Username</label>
-                                    <div class="controls">
-                                        <input type="text" id="username" placeholder="Type username"
-                                               class="span8" required>
-                                        <span class="help-inline">Minimum 5 Characters</span>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" name="username" id="username"
+                                               placeholder="Enter station's username">
                                     </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Disabled Input</label>
-                                    <div class="controls">
-                                        <input type="text" id="basicinput"
-                                               placeholder="You can't type something here..." class="span8" disabled>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" pattern=".{6,}" class="form-control" name="password"
+                                               id="password" placeholder="Password" required
+                                               title="8 characters minimum">
                                     </div>
-                                </div>
+                                    <input type="checkbox" onclick="showPassword()">Show Password
 
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Tooltip Input</label>
-                                    <div class="controls">
-                                        <input data-title="A tooltip for the input" type="text"
-                                               placeholder="Hover to view the tooltip…" data-original-title=""
-                                               class="span8 tip">
+                                    <div class="form-group">
+                                        <label for="unique_id">Station Unique ID</label>
+                                        <input type="text" class="form-control" name="unique_id" id="unique_id"
+                                               placeholder="ID for station">
                                     </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Prepended Input</label>
-                                    <div class="controls">
-                                        <div class="input-prepend">
-                                            <span class="add-on">#</span><input class="span8" type="text"
-                                                                                placeholder="prepend">
+                                    <div class="form-group">
+                                        <label for="name">Station Name</label>
+                                        <input type="text" class="form-control" name="name" id="name"
+                                               placeholder="Name for station">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="primary_email">Primary Email address</label>
+                                        <input type="email" class="form-control" name="primary_email" id="primary_email"
+                                               placeholder="Enter primary email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="secondary_email">Secondary Email address</label>
+                                        <input type="email" class="form-control" name="secondary_email"
+                                               id="secondary_email" placeholder="Enter secondary email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="contact_number">Contact number</label>
+                                        <input type="text" class="form-control" name="contact_number"
+                                               id="contact_number" placeholder="Enter user's name">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <label for="country">Country</label>
+                                            <input type="text" class="form-control" name="country" id="country"
+                                                   placeholder="Enter user's name">
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Appended Input</label>
-                                    <div class="controls">
-                                        <div class="input-append">
-                                            <input type="text" placeholder="5.000" class="span8"><span
-                                                    class="add-on">$</span>
+
+                                        <div class="form-group col-md-3">
+                                            <label for="state">State</label>
+                                            <input type="text" class="form-control" name="state" id="state"
+                                                   placeholder="Enter user's name">
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Dropdown Button</label>
-                                    <div class="controls">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Dropdown
-                                                Button <i class="icon-caret-down"></i></a>
-                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                                <li><a href="#">First Row</a></li>
-                                                <li><a href="#">Second Row</a></li>
-                                                <li><a href="#">Third Row</a></li>
-                                                <li><a href="#">Fourth Row</a></li>
-                                            </ul>
+                                        <div class="form-group col-md-3">
+                                            <label for="city">City</label>
+                                            <input type="text" class="form-control" name="city" id="city"
+                                                   placeholder="Enter user's name">
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Dropdown</label>
-                                    <div class="controls">
-                                        <select tabindex="1" data-placeholder="Select here.." class="span8">
-                                            <option value="">Select here..</option>
-                                            <option value="Category 1">First Row</option>
-                                            <option value="Category 2">Second Row</option>
-                                            <option value="Category 3">Third Row</option>
-                                            <option value="Category 4">Fourth Row</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="post_code">Post code</label>
+                                            <input type="text" class="form-control" name="post_code" id="post_code"
+                                                   placeholder="Enter user's name">
+                                        </div>
 
-                                <div class="control-group">
-                                    <label class="control-label">Radiobuttons</label>
-                                    <div class="controls">
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
-                                                   checked="">
-                                            Option one
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
-                                                   value="option2">
-                                            Option two
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3"
-                                                   value="option3">
-                                            Option three
-                                        </label>
                                     </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label">Inline Radiobuttons</label>
-                                    <div class="controls">
-                                        <label class="radio inline">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
-                                                   checked="">
-                                            Option one
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
-                                                   value="option2">
-                                            Option two
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3"
-                                                   value="option3">
-                                            Option three
-                                        </label>
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control" name="address" id="address"
+                                               placeholder="Enter user's name">
                                     </div>
-                                </div>
 
-                                <div class="control-group">
-                                    <label class="control-label">Checkboxes</label>
-                                    <div class="controls">
-                                        <label class="checkbox">
-                                            <input type="checkbox" value="">
-                                            Option one
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" value="">
-                                            Option two
-                                        </label>
-                                        <label class="checkbox">
-                                            <input type="checkbox" value="">
-                                            Option three
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label">Inline Checkboxes</label>
-                                    <div class="controls">
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="">
-                                            Option one
-                                        </label>
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="">
-                                            Option two
-                                        </label>
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="">
-                                            Option three
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="basicinput">Textarea</label>
-                                    <div class="controls">
-                                        <textarea class="span8" rows="5"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <button type="submit" class="btn">Submit Form</button>
+                                    <div class="card-footer">
+                                        <input type="submit" class="btn btn-primary" name="submit"/>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
 
-
-                </div><!--/.content-->
             </div>
-            <!--/.span9-->
-        </div>
+        </section>
     </div>
-    <!--/.container-->
+    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
+
 </div>
-<!--/.wrapper-->
-
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
-
 </body>
+
+
 </html>
