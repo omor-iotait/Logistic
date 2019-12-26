@@ -144,7 +144,7 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     </div>
 
                                     <div class="card-footer">
-                                        <input type="submit" class="btn btn-primary" name="submit"/>
+                                        <input type="submit" class="btn btn-primary" id="submit" name="submit"/>
                                     </div>
                                 </div>
                             </form>
@@ -156,10 +156,22 @@ include(ROOT_PATH . "admin/includes/head.php");
         </section>
     </div>
     <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
-
 </div>
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<script type="text/javascript">
+    var $input = $('input:text'),
+        $register = $('#submit');
+
+    $register.attr('disabled', true);
+    $input.keyup(function() {
+        var trigger = false;
+        $input.each(function() {
+            if (!$(this).val()) {
+                trigger = true;
+            }
+        });
+        trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
+    });
+</script>
 </body>
-
-
 </html>

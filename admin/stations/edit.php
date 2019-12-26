@@ -8,14 +8,14 @@ if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $station_sidebar = "active";
-$station_add = "active";
+$station_view = "active";
 $station_menu = "menu-open";
 $title = "Station Edit | Admin";
 $id = $_GET['id'];
 $query = "select * from stations where id='$id' LIMIT 1";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
-if (@$_POST['submit']) {
+if (@$_POST['update']) {
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $password = md5($password);
@@ -145,7 +145,7 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     </div>
 
                                     <div class="card-footer">
-                                        <input type="submit" class="btn btn-primary" name="submit" value="Update"/>
+                                        <input type="submit" class="btn btn-primary" name="update" value="Update" id="update"/>
                                     </div>
                                 </div>
                             </form>
@@ -160,7 +160,20 @@ include(ROOT_PATH . "admin/includes/head.php");
 
 </div>
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<script type="text/javascript">
+   /* var $input = $('input:text'),
+        $register = $('#update');
+
+    $register.attr('disabled', true);
+    $input.keyup(function() {
+        var trigger = false;
+        $input.each(function() {
+            if (!$(this).val()) {
+                trigger = true;
+            }
+        });
+        trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
+    });*/
+</script>
 </body>
-
-
 </html>
