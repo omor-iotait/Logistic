@@ -35,8 +35,6 @@ VALUES('$username','$password','$unique_id','$name','$primary_email','$secondary
         exit(0);
     } else {
         $_SESSION['error'] = "Station info Not Inserted!";
-        echo mysqli_error();
-
     }
 }
 ?>
