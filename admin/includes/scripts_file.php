@@ -1,5 +1,7 @@
 
 <script src="<?php echo BASE_URL; ?>assets/scripts/plugins/jquery/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo BASE_URL; ?>assets/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -18,7 +20,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo BASE_URL; ?>assets/scripts/dist/js/demo.js"></script>
 
-
 <script>
 
     function showPassword() {
@@ -29,7 +30,6 @@
             x.type = "password";
         }
     }
-
 
 
     function myCustomeid() {
@@ -54,6 +54,7 @@
 
         column.toggleClass("hidden");
     });
+
 
 
 </script>
