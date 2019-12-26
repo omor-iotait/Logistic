@@ -1,8 +1,21 @@
+<?php
+require_once("../../includes/configure.php");
+include(ROOT_PATH . "includes/db.php");
+
+
+    $query = "select * from customers";
+    $result =mysqli_query($con,$query);
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once("../../includes/configure.php");
-include(ROOT_PATH . "includes/db.php");
+<?php
 include(ROOT_PATH . "admin/includes/head.php"); ?>
 
 
@@ -44,56 +57,72 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <select id="mySelect">
+                                    <option>Select</option>
+                                    <option data-column="#id" value="gh">ID</option>
+                                    <option data-column="#name">name</option>
+
+                                    <option data-column="#email">Email</option>
+                                    <option data-column="#c_number">Contact Number</option>
+                                    <option data-column="#c_id">Customer ID</option>
+                                    <option data-column="#country">Country</option>
+                                    <option data-column="#city">City</option>
+                                    <option data-column="#state">State</option>
+                                    <option data-column="#post_code">Postal Code</option>
+                                    <option data-column="#address">Address</option>
+
+                                    <option data-column="#label">label</option>
+                                </select>
+
+<!--                                <button type="button" data-column="#id">Hide/show 1st</button>-->
+<!--                                <button type="button" data-column="#name">Hide/show Station</button>-->
+<!---->
+<!--                                <button type="button" data-column="#email">Hide/show Primary</button>-->
+<!--                                <button type="button" data-column="#c_number">Hide/show Secondary</button>-->
+<!--                                <button type="button" data-column="#c_id">Hide/show Secondary</button>-->
+<!--                                <button type="button" data-column="#c_address">Hide/show Secondary</button>-->
+<!--                                <button type="button" data-column="#label">Hide/show Label</button>-->
+
+
                                 <table class="table table-bordered">
                                     <thead>
+                                    <style type="text/css">
+                                        .hidden { display: none }
+                                    </style>
                                     <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>Task</th>
-                                        <th>Progress</th>
-                                        <th style="width: 40px">Label</th>
+                                        <th style="width: 10px" id="id">#</th>
+                                        <th id="name">Customer Name</th>
+
+                                        <th id="email">Email</th>
+                                        <th id="c_number">Contact Number</th>
+                                        <th id="c_id">Customer ID</th>
+                                        <th id="country">Country</th>
+                                        <th id="city">City</th>
+                                        <th id="state">State</th>
+                                        <th id="post_code">Postal Code</th>
+                                        <th id="address">Address</th>
+                                        <th id="label" style="width: 40px">Label</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Update software</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Clean database</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-warning">70%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>Cron job running</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">30%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>Fix and squish bugs</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">90%</span></td>
-                                    </tr>
+                                    <?php
+                                    while($row = mysqli_fetch_assoc($result))
+                                    {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $row['id'];?></td>
+                                            <td><?php echo $row['username'];?></td>
+                                            <td><?php echo $row['email'];?></td>
+                                            <td><?php echo $row['contact_number'];?></td>
+                                            <td><?php echo $row['custom_id'];?></td>
+                                            <td><?php echo $row['country'];?></td>
+                                            <td><?php echo $row['city'];?></td>
+                                            <td><?php echo $row['state'];?></td>
+                                            <td><?php echo $row['post_code'];?></td>
+                                            <td><?php echo $row['address'];?></td>
+                                            <td><span class="badge bg-danger">55%</span></td>
+                                        </tr>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -128,6 +157,9 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
 <!-- ./wrapper -->
 
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+
+
+
 </body>
 
 

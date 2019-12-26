@@ -32,4 +32,29 @@
     }
 
 
+    function myCustomeid() {
+        date = Date.now();
+        var time = date.toString();
+        time1 = time.slice(5);
+        time1 = parseInt(time1);
+        var x = document.getElementById("custom_id");
+        x.value = 'LMS'+time1;
+
+    }
+
+
+    $(document).on("click", "[data-column]", function () {
+        console.log("sdf");
+        var button = $(this),
+            header = $(button.data("column")),
+            table = header.closest("table"),
+            index = header.index() + 1, // convert to CSS's 1-based indexing
+            selector = "tbody tr td:nth-child(" + index + ")",
+            column = table.find(selector).add(header);
+
+        column.toggleClass("hidden");
+    });
+
+
+
 </script>
