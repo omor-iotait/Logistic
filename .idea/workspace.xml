@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3732ca05-6bfe-4c7a-97ea-9f49efe0326d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/includes/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/Session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/includes/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/scripts_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/scripts_file.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/stations/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/stations/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/delete.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/stations/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/stations/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/view.php" afterDir="false" />
     </list>
@@ -21,7 +14,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -54,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AdminLTE-3.0.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -85,7 +78,8 @@
       <option name="presentableId" value="Default" />
       <updated>1577078634808</updated>
       <workItem from="1577078635983" duration="14610000" />
-      <workItem from="1577157973417" duration="18835000" />
+      <workItem from="1577157973417" duration="19594000" />
+      <workItem from="1577330169216" duration="1517000" />
     </task>
     <servers />
   </component>

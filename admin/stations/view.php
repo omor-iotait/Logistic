@@ -100,7 +100,7 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                                         <?php
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
-                                            <tr>
+                                            <tr id="row<?php echo $row['id'];?>">
                                                 <td><?php echo $row['id']; ?></td>
                                                 <td><?php echo $row['username']; ?></td>
                                                 <td><?php echo $row['name']; ?></td>
@@ -115,7 +115,7 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                                                 <td><?php echo $row['address']; ?></td>
                                                 <td>
                                                     <a href="edit.php?id=<?php echo $row['id'];?>"><span class="badge bg-info">Edit</span></a>
-                                                    <a href="delete.php?id=<?php echo $row['id'];?>"><span class="badge bg-danger">Delete</span></a>
+                                                    <a href="#" id="<?php echo $row['id'];?>" onclick="deleteFunction(this.id)"><span class="badge bg-danger">Delete</span></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -232,8 +232,19 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
     <!-- ./wrapper -->
 
     <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
-
+    <?php
+    if (@$_SESSION['success'])
+    {
+        ?>
+        <script>
+            Swal.fire('Success!', '<?php echo $_SESSION['success'];?>', 'success');
+        </script>
+        <?php
+        unset($_SESSION['success']);
+    }
+    ?>
     <script type="text/javascript">
+
 
         $(document).on("click", "[data-column]", function () {
             console.log("sdf");
@@ -264,6 +275,40 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                 }*/
             }).change();
         });
+
+        function deleteFunction(id){
+            var id = id;
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: "delete.php",
+                        data: {id:id},
+                        success: function (data) {
+                            if(data=="YES"){
+                                $("#row"+id).remove();
+                            }else{
+                                alert("can't delete the row")
+                            }
+                        }
+                    });
+                    Swal.fire(
+                        'Deleted!',
+                        'Station has been deleted.',
+                        'success'
+                    );
+
+                }
+            })
+        }
     </script>
     </body>
 

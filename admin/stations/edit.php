@@ -38,8 +38,6 @@ country='$country',state='$state',city='$city',post_code='$post_code',address='$
         exit(0);
     } else {
         $_SESSION['error'] = "Station info Not Inserted!";
-        echo mysqli_error();
-
     }
 }
 ?>
@@ -77,7 +75,7 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <input type="password" pattern=".{6,}" class="form-control" name="password"
-                                               id="password" placeholder="Password" required
+                                               id="password" placeholder="Password"
                                                title="8 characters minimum">
                                     </div>
                                     <input type="checkbox" onclick="showPassword()">Show Password
@@ -109,33 +107,33 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="contact_number">Contact number</label>
                                         <input type="text" class="form-control" name="contact_number" value="<?php echo $row['contact_number'];?>"
-                                               id="contact_number" placeholder="Enter user's name">
+                                               id="contact_number" placeholder="Enter contact number">
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-3">
                                             <label for="country">Country</label>
                                             <input type="text" class="form-control" name="country" id="country" value="<?php echo $row['country'];?>"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="Enter country name">
                                         </div>
 
 
                                         <div class="form-group col-md-3">
                                             <label for="state">State</label>
                                             <input type="text" class="form-control" name="state" id="state" value="<?php echo $row['state'];?>"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="Enter state name">
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label for="city">City</label>
                                             <input type="text" class="form-control" name="city" id="city" value="<?php echo $row['city'];?>"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="Enter city name">
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label for="post_code">Post code</label>
                                             <input type="text" class="form-control" name="post_code" id="post_code" value="<?php echo $row['post_code'];?>"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="Enter post code">
                                         </div>
 
                                     </div>
@@ -143,11 +141,11 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" class="form-control" name="address" id="address" value="<?php echo $row['address'];?>"
-                                               placeholder="Enter user's name">
+                                               placeholder="Enter Address">
                                     </div>
 
                                     <div class="card-footer">
-                                        <input type="submit" class="btn btn-primary" name="submit"/>
+                                        <input type="submit" class="btn btn-primary" name="submit" value="Update"/>
                                     </div>
                                 </div>
                             </form>
