@@ -1,6 +1,16 @@
 <?php
 require_once("../../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
+include(ROOT_PATH . "classes/Session.php");
+
+Session::checkSession();
+if (isset($_GET['action']) && $_GET['action'] == "logout") {
+    Session::destroy();
+}
+$customer_sidebar = "active";
+$customer_add = "active";
+$customer_menu = "menu-open";
+$title = "Customer Add | Admin";
 if(@$_POST['submit']) {
 
     $username = mysqli_real_escape_string($con, $_POST['username']);
@@ -22,15 +32,12 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
 
     if ($con->query($query) === TRUE) {
         $_SESSION['success'] = "New customer info created successfully";
-        header("location:".BASE_URL."admin/index.php");
+        header("location:".BASE_URL."admin/customers/view.php");
         exit(0);
     } else {
         $_SESSION['error'] = "customer info Not Inserted!";
-        echo mysqli_error($con);
 
     }
-
-
 }
 ?>
 
@@ -49,21 +56,7 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Customer</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active"><a href="#">Add Customer</a></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <br>
 
         <section class="content">
             <div class="container-fluid">
@@ -72,7 +65,7 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Quick Example</h3>
+                                <h3 class="card-title">Add Customer</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -153,7 +146,7 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
                                     </div>
 
                                 <div class="card-footer">
-                                    <input type="submit" name="submit" class="btn btn-primary">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
@@ -163,22 +156,39 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
             </div>
         </section>
     </div>
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="#">Amber <Logistic></Logistic></a>.</strong>
-        All rights reserved.
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
 </div>
-<!-- ./wrapper -->
-
 <?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
-</body>
+<script type="text/javascript">
+    var $input = $('input:text'),
+        $register = $('#submit');
 
+    $register.attr('disabled', true);
+    $input.keyup(function() {
+        var trigger = false;
+        $input.each(function() {
+            if (!$(this).val()) {
+                trigger = true;
+            }
+        });
+        trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
+    });
+
+    var $input = $('input:text'),
+        $register = $('#submit');
+
+    $register.attr('disabled', true);
+    $input.keyup(function() {
+        var trigger = false;
+        $input.each(function() {
+            if (!$(this).val()) {
+                trigger = true;
+            }
+        });
+        trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
+    });
+</script>
+</body>
 
 </html>
 

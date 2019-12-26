@@ -13,17 +13,11 @@ $station_menu = "menu-open";
 $title = "Station View | Admin";
 
 
-//$query = "select * from stations";
-//$result =mysqli_query($con,$query);
-
 $total_pages = $con->query('SELECT * FROM stations')->num_rows;
-
 // Check if the page number is specified and check if it's a number, if not return the default page number which is 1.
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-
 // Number of results to show on each page.
 $num_results_on_page = 1;
-
 if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
 // Calculate the page to get the results we need from our table.
     $calc_page = ($page - 1) * $num_results_on_page;
@@ -122,7 +116,7 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                                         </tbody>
                                     </table>
                                 </div>
-                                <!-- /.card-body -->
+                                <!--Pagination-->
                                 <div class="card-footer clearfix">
                                     <style type="text/css">
                                         .pagination {
@@ -216,18 +210,7 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                 </div>
             </section>
         </div>
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="#">Amber
-                    <Logistic></Logistic>
-                </a>.</strong>
-            All rights reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+        <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
     </div>
     <!-- ./wrapper -->
 
@@ -244,8 +227,6 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
     }
     ?>
     <script type="text/javascript">
-
-
         $(document).on("click", "[data-column]", function () {
             console.log("sdf");
             var button = $(this),
@@ -311,8 +292,6 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
         }
     </script>
     </body>
-
-
     </html>
     <?php
     $stmt->close();

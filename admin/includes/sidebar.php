@@ -69,8 +69,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item has-treeview <?php echo @$driver_menu;?>">
+                    <a href="#" class="nav-link  <?php echo @$driver_sidebar;?>">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Driver
@@ -79,13 +79,13 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/drivers/add.php" class="nav-link ">
+                            <a href="<?php  echo BASE_URL; ?>admin/drivers/add.php" class="nav-link  <?php echo @$driver_add;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Add Driver</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/drivers/view.php" class="nav-link">
+                            <a href="<?php  echo BASE_URL; ?>admin/drivers/view.php" class="nav-link <?php echo @$driver_view;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Driver List</p>
                             </a>
