@@ -106,33 +106,33 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="contact_number">Contact number</label>
                                         <input type="text" class="form-control" name="contact_number"
-                                               id="contact_number" placeholder="Enter user's name">
+                                               id="contact_number" placeholder="Contact number">
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-3">
                                             <label for="country">Country</label>
                                             <input type="text" class="form-control" name="country" id="country"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="Country name">
                                         </div>
 
 
                                         <div class="form-group col-md-3">
                                             <label for="state">State</label>
                                             <input type="text" class="form-control" name="state" id="state"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="State name">
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label for="city">City</label>
                                             <input type="text" class="form-control" name="city" id="city"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="City name">
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label for="post_code">Post code</label>
                                             <input type="text" class="form-control" name="post_code" id="post_code"
-                                                   placeholder="Enter user's name">
+                                                   placeholder="Post code">
                                         </div>
 
                                     </div>
@@ -140,7 +140,7 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" class="form-control" name="address" id="address"
-                                               placeholder="Enter user's name">
+                                               placeholder="Address">
                                     </div>
 
                                     <div class="card-footer">
