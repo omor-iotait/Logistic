@@ -1,10 +1,14 @@
 
 <script src="<?php echo BASE_URL; ?>assets/scripts/plugins/jquery/jquery.min.js"></script>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo BASE_URL; ?>assets/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<script src="<?php echo BASE_URL; ?>assets/all/datepicker/js/bootstrap-datepicker.min.js"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>

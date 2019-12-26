@@ -67,6 +67,12 @@
                                 <p>Station List</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php  echo BASE_URL; ?>admin/stations/prefix.php" class="nav-link <?php echo @$station_prefix;?>">
+                                <i class="fa fa-circle nav-icon"></i>
+                                <p>Prefix Set</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview <?php echo @$driver_menu;?>">
@@ -79,7 +85,7 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/drivers/add.php" class="nav-link  <?php echo @$driver_add;?>">
+                            <a href="<?php  echo BASE_URL; ?>admin/drivers/add.php" class="nav-link <?php echo @$driver_add;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Add Driver</p>
                             </a>
@@ -92,8 +98,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item has-treeview <?php echo @$tracking_menu;?>">
+                    <a href="#" class="nav-link <?php echo @$tracking_sidebar;?>">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Tracking Number
@@ -102,15 +108,27 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/tracking-numbers/add.php" class="nav-link ">
+                            <a href="<?php  echo BASE_URL; ?>admin/tracking-numbers/add.php" class="nav-link <?php echo @$tracking_add;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p><small>Add Tracking Number</small></p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>admin/tracking-number/view.php" class="nav-link">
+                            <a href="<?php  echo BASE_URL; ?>admin/tracking-numbers/view.php" class="nav-link <?php echo @$tracking_view;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p><small>Tracking Number List</small></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php  echo BASE_URL; ?>admin/tracking-numbers/status-add.php" class="nav-link <?php echo @$tracking_status_add;?>">
+                                <i class="fa fa-circle nav-icon"></i>
+                                <p><small>Tracking Status Add</small></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php  echo BASE_URL; ?>admin/tracking-numbers/status-view.php" class="nav-link <?php echo @$tracking_status_view;?>">
+                                <i class="fa fa-circle nav-icon"></i>
+                                <p><small>Tracking Status List</small></p>
                             </a>
                         </li>
                     </ul>

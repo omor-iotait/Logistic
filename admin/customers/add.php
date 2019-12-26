@@ -27,8 +27,8 @@ if(@$_POST['submit']) {
     $post_code = mysqli_real_escape_string($con, $_POST['post_code']);
     $address = mysqli_real_escape_string($con, $_POST['address']);
 
-    $query = "INSERT INTO `customers`(`username`,`password`,`email`,`name`,`contact_number`,`custom_id`,`company_name`,`country`,`state`,`city`,`post_code`,`address`) 
-VALUES('$username','$password','$email','$name','$contact_number','$custom_id','$company_name','$country','$state','$city','$post_code','$address')";
+    $query = "INSERT INTO `customers`(`username`,`password`,`email`,`name`,`contact_number`,`custom_id`,`company_name`,`country`,`state`,`city`,`post_code`,`address`,`creator_type`) 
+VALUES('$username','$password','$email','$name','$contact_number','$custom_id','$company_name','$country','$state','$city','$post_code','$address','1')";
 
     if ($con->query($query) === TRUE) {
         $_SESSION['success'] = "New customer info created successfully";
