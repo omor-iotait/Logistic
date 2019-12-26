@@ -9,8 +9,8 @@ if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $dashboard_sidebar = "active";
-$title = "Dashboard | station";
-include(ROOT_PATH . "admin/includes/head.php");
+$title = "Dashboard | Admin";
+include(ROOT_PATH . "station/includes/head.php");
 ?>
 
 
@@ -19,8 +19,8 @@ include(ROOT_PATH . "admin/includes/head.php");
 
     <!-- Navbar -->
     <?php
-    include(ROOT_PATH . "admin/includes/header.php");
-    include(ROOT_PATH . "admin/includes/sidebar.php");
+    include(ROOT_PATH . "station/includes/header.php");
+    include(ROOT_PATH . "station/includes/sidebar.php");
     ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -101,10 +101,10 @@ include(ROOT_PATH . "admin/includes/head.php");
             </div>
         </section>
     </div>
-    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
+    <?php include(ROOT_PATH . "station/includes/footer.php"); ?>
 </div>
 
-<?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<?php include(ROOT_PATH . "station/includes/scripts_file.php"); ?>
 <?php
 if (@$_SESSION['success'])
 {

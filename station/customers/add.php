@@ -23,21 +23,17 @@ if(@$_POST['submit']) {
     $company_name = mysqli_real_escape_string($con, $_POST['company']);
     $country = mysqli_real_escape_string($con, $_POST['country']);
     $state = mysqli_real_escape_string($con, $_POST['state']);
-    if(Session::get('admin')){
-        $creator_type = 1;
-    }
     $city = mysqli_real_escape_string($con, $_POST['city']);
     $post_code = mysqli_real_escape_string($con, $_POST['post_code']);
     $address = mysqli_real_escape_string($con, $_POST['address']);
+    $station_id = Session::get('id');
 
-    $query = "INSERT INTO `customers`(`username`,`password`,`email`,`name`,`contact_number`,`custom_id`,`company_name`,`country`,`state`,`city`,`post_code`,`address`,`creator_type`) 
-
-VALUES('$username','$password','$email','$name','$contact_number','$custom_id','$company_name','$country','$state','$city','$post_code','$address','1')";
-
+    $query = "INSERT INTO `customers`(`username`,`password`,`email`,`name`,`contact_number`,`custom_id`,`company_name`,`country`,`state`,`city`,`post_code`,`address`,`created_by`,`creator_type`) 
+VALUES('$username','$password','$email','$name','$contact_number','$custom_id','$company_name','$country','$state','$city','$post_code','$address','$station_id','2')";
 
     if ($con->query($query) === TRUE) {
         $_SESSION['success'] = "New customer info created successfully";
-        header("location:".BASE_URL."admin/customers/view.php");
+        header("location:".BASE_URL."station/customers/view.php");
         exit(0);
     } else {
         $_SESSION['error'] = "customer info Not Inserted!";
@@ -48,15 +44,15 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include(ROOT_PATH . "admin/includes/head.php"); ?>
+<?php include(ROOT_PATH . "station/includes/head.php"); ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Navbar -->
     <?php
-    include(ROOT_PATH . "admin/includes/header.php");
-    include(ROOT_PATH . "admin/includes/sidebar.php");
+    include(ROOT_PATH . "station/includes/header.php");
+    include(ROOT_PATH . "station/includes/sidebar.php");
     ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -161,9 +157,9 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
             </div>
         </section>
     </div>
-    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
+    <?php include(ROOT_PATH . "station/includes/footer.php"); ?>
 </div>
-<?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<?php include(ROOT_PATH . "station/includes/scripts_file.php"); ?>
 
 
 <script>
