@@ -36,7 +36,7 @@ if(@$_POST['update']) {
 country='$country',state='$state',city='$city',post_code='$post_code',address='$address'  WHERE id='$id'";
     if ($con->query($query) === TRUE) {
         $_SESSION['success'] = "Customer info updated successfully";
-        header("location:".BASE_URL."customer/customers/view.php");
+        header("location:".BASE_URL."station/customers/view.php");
         exit(0);
     } else {
         $_SESSION['error'] = "Customer info Not Inserted!";

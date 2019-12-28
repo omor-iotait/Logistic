@@ -40,15 +40,15 @@
                         <li class="nav-item">
                             <a href="<?php  echo BASE_URL; ?>station/customers/view.php" class="nav-link <?php echo @$customer_view;?>">
                                 <i class="fa fa-circle nav-icon"></i>
-                                <p>Customer List</p>
+                                <p><small>Customer List</small></p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
 
-                <li class="nav-item has-treeview <?php echo @$driver_menu;?>">
-                    <a href="#" class="nav-link  <?php echo @$driver_sidebar;?>">
+                <!--<li class="nav-item has-treeview <?php /*echo @$driver_menu;*/?>">
+                    <a href="#" class="nav-link  <?php /*echo @$driver_sidebar;*/?>">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Driver
@@ -57,19 +57,27 @@
                     </a>
                     <ul class="nav nav-treeview ">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>station/drivers/add.php" class="nav-link  <?php echo @$driver_add;?>">
+                            <a href="<?php /* echo BASE_URL; */?>station/drivers/add.php" class="nav-link  <?php /*echo @$driver_add;*/?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Add Driver</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>station/drivers/view.php" class="nav-link <?php echo @$driver_view;?>">
+                            <a href="<?php /* echo BASE_URL; */?>station/drivers/view.php" class="nav-link <?php /*echo @$driver_view;*/?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>Driver List</p>
                             </a>
                         </li>
                     </ul>
+                </li>-->
+
+                <li class="nav-item ">
+                    <a href="<?php  echo BASE_URL; ?>station/prefix.php" class="nav-link <?php echo @$station_sidebar?>">
+                        <i class="fa fa-artstation nav-icon"></i>
+                        <p>My Prefix</p>
+                    </a>
                 </li>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fa fa-home"></i>

@@ -28,7 +28,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link href="<?php echo BASE_URL; ?>assets/all/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
 </head>
