@@ -32,7 +32,7 @@
                     <span class="float-right text-muted text-sm">Login as <?php echo Session::get('admin');?></span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="logout.php" class="dropdown-item">
+                <a href="<?php echo BASE_URL; ?>admin/logout.php" class="dropdown-item">
                     <button class="btn btn-primary">Logout</button>
                 </a>
 

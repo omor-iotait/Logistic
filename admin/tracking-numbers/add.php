@@ -17,30 +17,54 @@ $query_status = "SELECT * FROM status";
 $result_status = mysqli_query($con, $query_status);
 $query_customer = "SELECT * FROM customers";
 $result_customer = mysqli_query($con, $query_customer);
+$query_receiver = "SELECT * FROM customers";
+$result_receiver = mysqli_query($con, $query_receiver);
 if (@$_POST['submit']) {
-    $username = mysqli_real_escape_string($con, $_POST['username']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
-    $password = md5($password);
-    $unique_id = mysqli_real_escape_string($con, $_POST['unique_id']);
-    $name = mysqli_real_escape_string($con, $_POST['name']);
-    $primary_email = mysqli_real_escape_string($con, $_POST['primary_email']);
-    $secondary_email = mysqli_real_escape_string($con, $_POST['secondary_email']);
-    $contact_number = mysqli_real_escape_string($con, $_POST['contact_number']);
-    $country = mysqli_real_escape_string($con, $_POST['country']);
-    $state = mysqli_real_escape_string($con, $_POST['state']);
-    $city = mysqli_real_escape_string($con, $_POST['city']);
-    $post_code = mysqli_real_escape_string($con, $_POST['post_code']);
-    $address = mysqli_real_escape_string($con, $_POST['address']);
+    $tracking_number = mysqli_real_escape_string($con, $_POST['tracking_number']);
+    $date_stamp = mysqli_real_escape_string($con, $_POST['date_stamp']);
+    $date = strtotime($date_stamp);
+    $station_prefix_id = mysqli_real_escape_string($con, $_POST['station_prefix_id']);
+    $status_id = mysqli_real_escape_string($con, $_POST['status_id']);
+    $remark = mysqli_real_escape_string($con, $_POST['remark']);
+    $sender_id = mysqli_real_escape_string($con, $_POST['sender_id']);
+    $receiver_id = mysqli_real_escape_string($con, $_POST['receiver_id']);
 
-    $query = "INSERT INTO stations(username,password,unique_id,name,primary_email,secondary_email,contact_number,country,state,city,post_code,address) 
-VALUES('$username','$password','$unique_id','$name','$primary_email','$secondary_email','$contact_number','$country','$state','$city','$post_code','$address')";
+    if($_FILES['image']['tmp_name'] == FALSE){
+        echo "Please select an image";
+    }
+    else{
+        $permited = array('jpg', 'jpeg', 'png', 'gif');
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_temp = $_FILES['image']['tmp_name'];
+        $data = getimagesize($file_temp);
+        $w = $data[0]/2;
+        $h = $data[1]/2;
+        $div = explode('.', $file_name);
+        $file_ext = strtolower(end($div));
+        $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+        $uploaded_image = "upload/" . $unique_image;
+
+
+        if (in_array($file_ext, $permited) === false || empty($uploaded_image)) {
+            echo "<span class='error'>You can upload only:-" . implode(', ', $permited) . "</span>";
+        } else {
+            $uploadedImage = imagecreatefromjpeg($file_temp);
+            $oldw = imagesx($uploadedImage);
+            $oldh = imagesy($uploadedImage);
+            $temp = imagecreatetruecolor($w, $h);
+            imagecopyresampled($temp, $uploadedImage, 0, 0, 0, 0, $w, $h, $oldw, $oldh);
+            imagejpeg($temp, "../upload/" . $unique_image);
+        }
+    }
+
+    $query = "INSERT INTO tracking_numbers(tracking_number,station_prefix_id,status_id,date_stamp,image_path,remark,sender_id,receiver_id) VALUES('$tracking_number','$station_prefix_id','$status_id','$date','$uploaded_image','$remark','$sender_id','$receiver_id')";
     if ($con->query($query) === TRUE) {
-        $_SESSION['success'] = "New Station info created successfully";
-        header("location:".BASE_URL."admin/stations/view.php");
+        $_SESSION['success'] = "New tracking info created successfully";
+        header("location:".BASE_URL."admin/tracking-numbers/add.php");
         exit(0);
     } else {
-        $_SESSION['error'] = "Station info Not Inserted!";
-        echo mysqli_error();
+        $_SESSION['error'] = "Tracking info Not Inserted!";
 
     }
 }
@@ -67,7 +91,7 @@ include(ROOT_PATH . "admin/includes/head.php");
                             <div class="card-header">
                                 <h3 class="card-title"> Add Tracking Number</h3>
                             </div>
-                            <form role="form" action="#" method="post">
+                            <form role="form" action="" method="post" enctype="multipart/form-data">
                                 <div class="card-body">
 
                                     <div class="form-group">
@@ -94,7 +118,7 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="status_id">Status</label>
                                         <select id="status_id" name="status_id"
-                                                class="form-control form-control-md select2">
+                                                class="form-control form-control-md">
                                             <option>Status</option>
                                             <?php
                                             while($status = $result_status->fetch_assoc()) {
@@ -124,8 +148,8 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="sender_id">Sender</label>
                                         <select id="sender_id" name="sender_id"
-                                                class="form-control form-control-md select2">
-                                            <option>Status</option>
+                                                class="form-control form-control-md">
+                                            <option selected disabled>Sender</option>
                                             <?php
 
                                             while($customer = $result_customer->fetch_assoc()) {
@@ -140,12 +164,12 @@ include(ROOT_PATH . "admin/includes/head.php");
                                     <div class="form-group">
                                         <label for="receiver_id">Receiver</label>
                                         <select id="receiver_id" name="receiver_id"
-                                                class="form-control form-control-md select2">
-                                            <option>Status</option>
+                                                class="form-control form-control-md">
+                                            <option selected disabled>Receiver</option>
                                             <?php
-                                            while($customers = $result_customer->fetch_assoc()) {
+                                            while($receiver = $result_receiver->fetch_assoc()) {
                                                 ?>
-                                                <option value="<?php echo @$customers['id'];?>"><?php echo @$customers['name'];?></option>
+                                                <option value="<?php echo @$receiver['id'];?>"><?php echo @$receiver['name'];?></option>
                                                 <?php
                                             }
                                             ?>
@@ -179,10 +203,10 @@ include(ROOT_PATH . "admin/includes/head.php");
     });
 
     $("#status_id").select2({
-        width: "resolve"
+
     });
 
-    var $input = $('input:text'),
+    /*var $input = $('input:text'),
         $register = $('#submit');
 
     $register.attr('disabled', true);
@@ -194,7 +218,7 @@ include(ROOT_PATH . "admin/includes/head.php");
             }
         });
         trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
-    });
+    });*/
 </script>
 </body>
 </html>

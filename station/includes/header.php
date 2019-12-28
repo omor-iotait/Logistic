@@ -24,15 +24,15 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-bell"></i>
-                <span class="badge badge-warning navbar-badge"><?php echo Session::get('admin');?></span>
+                <span class="badge badge-warning navbar-badge"><?php echo Session::get('station');?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
                     <i class="fa fa-users mr-2"></i>
-                    <span class="float-right text-muted text-sm">Login as <?php echo Session::get('admin');?></span>
+                    <span class="float-right text-muted text-sm">Login as <?php echo Session::get('station');?></span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="logout.php" class="dropdown-item">
+                <a href="<?php echo BASE_URL?>station/logout.php" class="dropdown-item">
                     <button class="btn btn-primary">Logout</button>
                 </a>
 
