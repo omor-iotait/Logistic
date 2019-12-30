@@ -78,8 +78,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item has-treeview <?php echo @$tracking_menu;?>">
+                    <a href="#" class="nav-link <?php echo @$tracking_sidebar;?> ">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Tracking Number
@@ -88,13 +88,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>station/tracking-numbers/add.php" class="nav-link ">
+                            <a href="<?php  echo BASE_URL; ?>station/tracking-numbers/add.php" class="nav-link <?php echo @$tracking_add;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p><small>Add Tracking Number</small></p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php  echo BASE_URL; ?>station/tracking-number/view.php" class="nav-link">
+                            <a href="<?php  echo BASE_URL; ?>station/tracking-numbers/view.php" class="nav-link <?php echo @$tracking_view;?>">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p><small>Tracking Number List</small></p>
                             </a>

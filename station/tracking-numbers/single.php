@@ -10,8 +10,13 @@ $tracking_sidebar = "active";
 $tracking_view = "active";
 $tracking_menu = "menu-open";
 $tracking_number = $_GET['tracking_number'];
-$title = $tracking_number." | Admin";
-$query = "SELECT * FROM tracking_numbers WHERE tracking_number='$tracking_number' ORDER BY id DESC ";
+$title = $tracking_number." | Station";
+$station_id = Session::get('id');
+$query_prefix = "select * from station_prefix where station_id='$station_id' LIMIT 1";
+$result_prefix = mysqli_query($con, $query_prefix);
+$row_prefix = mysqli_fetch_assoc($result_prefix);
+$station_prefix_id = $row_prefix['id'];
+$query = "SELECT * FROM tracking_numbers WHERE tracking_number='$tracking_number' AND  station_prefix_id=$station_prefix_id ORDER BY id DESC ";
 $result = mysqli_query($con, $query);
 
 ?>
@@ -21,7 +26,7 @@ $result = mysqli_query($con, $query);
 <html lang="en">
 
 <?php
-include(ROOT_PATH . "admin/includes/head.php"); ?>
+include(ROOT_PATH . "station/includes/head.php"); ?>
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -29,8 +34,8 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
 
     <!-- Navbar -->
     <?php
-    include(ROOT_PATH . "admin/includes/header.php");
-    include(ROOT_PATH . "admin/includes/sidebar.php");
+    include(ROOT_PATH . "station/includes/header.php");
+    include(ROOT_PATH . "station/includes/sidebar.php");
     ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -158,11 +163,11 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                                 <?php
                                                 if (isset($row['image_path']) && !empty($row['image_path'])) {
                                                     ?>
-                                                    <button class='btn btn-primary' id='<?php echo "../".$row['image_path'] ?>' onclick='imageFunction(this.id)'>View Image</button>
+                                                    <button class='btn btn-primary' id='<?php echo "../../admin/".$row['image_path'] ?>' onclick='imageFunction(this.id)'>View Image</button>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <button class='btn btn-danger' id = '../upload/default/no-image.png' onclick='imageFunction(this.id)'>No Image</button>
+                                                    <button class='btn btn-danger' id = '../../admin/upload/default/no-image.png' onclick='imageFunction(this.id)'>No Image</button>
                                                     <?php
                                                 }
                                                 ?>
@@ -196,9 +201,9 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
             </div>
         </section>
     </div>
-    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
+    <?php include(ROOT_PATH . "station/includes/footer.php"); ?>
 </div>
-<?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<?php include(ROOT_PATH . "station/includes/scripts_file.php"); ?>
 
 <?php
 if (@$_SESSION['success']) {

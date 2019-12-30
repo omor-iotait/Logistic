@@ -17,7 +17,7 @@ $total_pages = $con->query('SELECT * FROM stations')->num_rows;
 // Check if the page number is specified and check if it's a number, if not return the default page number which is 1.
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 // Number of results to show on each page.
-$num_results_on_page = 1;
+$num_results_on_page = PAGINATION;
 if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
 // Calculate the page to get the results we need from our table.
     $calc_page = ($page - 1) * $num_results_on_page;
