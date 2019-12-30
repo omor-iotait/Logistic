@@ -15,10 +15,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php  echo BASE_URL; ?>customer/tracking-list.php" class="nav-link <?php echo @$tracking_sidebar;?>">
+                    <a href="<?php  echo BASE_URL; ?>customer/my-account.php" class="nav-link <?php echo @$customer_sidebar;?>">
                         <i class="nav-icon fa fa-th"></i>
                         <p>
-                            My Tracking List
+                            My Account
                         </p>
                     </a>
                 </li>

@@ -17,7 +17,7 @@ $total_pages = $con->query('SELECT * FROM stations')->num_rows;
 // Check if the page number is specified and check if it's a number, if not return the default page number which is 1.
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 // Number of results to show on each page.
-$num_results_on_page = PAGINATION;
+$num_results_on_page = 10;
 if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
 // Calculate the page to get the results we need from our table.
     $calc_page = ($page - 1) * $num_results_on_page;
@@ -50,7 +50,6 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                                 <div class="card-header">
                                     <h3 class="card-title">Station List</h3>
                                 </div>
-                                <!-- /.card-header -->
                                 <div class="card-body">
                                     <select id="mySelect" class="form-group">
                                         <option>Select</option>
@@ -67,15 +66,10 @@ if ($stmt = $con->prepare('SELECT * FROM stations ORDER BY id LIMIT ?,?')) {
                                     <button type="button" data-column="#p_email">Hide/show Primary</button>
                                     <button type="button" data-column="#s_email">Hide/show Secondary</button>
                                     <button type="button" data-column="#label">Hide/show Label</button>-->
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" style="table-layout: fixed">
                                         <thead>
-                                        <style type="text/css">
-                                            .hidden {
-                                                display: none
-                                            }
-                                        </style>
                                         <tr>
-                                            <th style="width: 10px" id="id">#</th>
+                                            <th id="id">#</th>
                                             <th id="name">Username</th>
                                             <th id="name">Station Name</th>
                                             <th id="unique_id">Unique ID</th>

@@ -15,7 +15,7 @@ $total_pages = $con->query('SELECT * FROM tracking_numbers group by tracking_num
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $num_results_on_page = PAGINATION;
 $calc_page = ($page - 1) * $num_results_on_page;
-$query = 'SELECT * FROM tracking_numbers group by tracking_number LIMIT ' . $calc_page . ',' . $num_results_on_page . '';
+$query = "SELECT * FROM tracking_numbers group by tracking_number LIMIT $calc_page,$num_results_on_page";
 $result = mysqli_query($con, $query);
 
 ?>
@@ -48,10 +48,10 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Customer List</h3>
+                                <h3 class="card-title">Tracking Number List</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card-body container-fluid">
                                 <select id="mySelect">
                                     <option>Select</option>
                                     <option data-column="#id" value="gh">ID</option>
@@ -69,7 +69,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                     <option data-column="#label">label</option>
                                 </select>
 
-                                <table class="table table-bordered" id="result" width="100%" cellspacing="0">
+                                <table class="table table-bordered layout-fixed" id="result" width="100%" cellspacing="0">
                                     <thead>
                                     <style type="text/css">
                                         .hidden {
@@ -182,10 +182,10 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                                     <td>
                                                         <?php
                                                         $status_id = $row1['status_id'];
-                                                        $query = "select * from status where id='$status_id' LIMIT 1";
-                                                        $result = mysqli_query($con, $query);
-                                                        $row = mysqli_fetch_assoc($result);
-                                                        echo $row['name'];
+                                                        $query_sta = "select * from status where id='$status_id' LIMIT 1";
+                                                        $result_sta = mysqli_query($con, $query_sta);
+                                                        $row_sta = mysqli_fetch_assoc($result_sta);
+                                                        echo $row_sta['name'];
                                                         ?>
                                                     </td>
                                                     <td><?php echo date('d/m/Y', $row1['date_stamp']);?></td>
@@ -207,6 +207,9 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                                         <a class="btn btn-primary"
                                                            href="single.php?tracking_number=<?php echo $row1['tracking_number']; ?>"><i
                                                                     class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-primary"
+                                                           href="pdf.php?tracking_number=<?php echo $row1['tracking_number']; ?>"><i
+                                                                    class="fa fa-file"></i></a>
                                                         <a class="btn btn-info"
                                                            href="edit.php?id=<?php echo $row1['id']; ?>"><i
                                                                     class="fa fa-edit"></i></a>

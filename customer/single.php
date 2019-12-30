@@ -6,9 +6,7 @@ Session::checkSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
-$tracking_sidebar = "active";
-$tracking_view = "active";
-$tracking_menu = "menu-open";
+$dashboard_sidebar = "active";
 $tracking_number = $_GET['tracking_number'];
 $title = $tracking_number." | Customer";
 $receiver_id = Session::get('id');
