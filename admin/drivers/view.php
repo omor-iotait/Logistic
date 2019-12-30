@@ -106,15 +106,10 @@ if ($stmt = $con->prepare('SELECT * FROM drivers ORDER BY id LIMIT ?,?')) {
                                     <!--                                <button type="button" data-column="#label">Hide/show Label</button>-->
 
 
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" style="table-layout: fixed">
                                         <thead>
-                                        <style type="text/css">
-                                            .hidden {
-                                                display: none
-                                            }
-                                        </style>
                                         <tr>
-                                            <th style="width: 10px" id="id">#</th>
+                                            <th id="id">#</th>
                                             <th id="name">Customer Name</th>
 
                                             <th id="email">Email</th>
@@ -127,7 +122,7 @@ if ($stmt = $con->prepare('SELECT * FROM drivers ORDER BY id LIMIT ?,?')) {
                                             <th id="state">State</th>
                                             <th id="post_code">Postal Code</th>
                                             <th id="address">Address</th>
-                                            <th id="label" style="width: 40px">Label</th>
+                                            <th id="label">Label</th>
                                         </tr>
                                         </thead>
                                         <tbody>

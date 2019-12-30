@@ -155,7 +155,7 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                         ?>
 
                                         <?php
-                                        /*$track = $row['tracking_number'];
+                                        $track = $row['tracking_number'];
                                         $query1 = "SELECT COUNT(*) as total FROM tracking_numbers WHERE tracking_number='" . $track . "' AND station_prefix_id='" .$station_prefix_id. "' ORDER BY date_stamp desc";
                                         $result1 = mysqli_query($con, $query1);
                                         $data = mysqli_fetch_assoc($result1);
@@ -166,26 +166,26 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                         $flag = 0;
                                         for ($i = 0; $i <= $data['total']; $i++) {
 
-                                            if ($flag == 0) {*/
+                                            if ($flag == 0) {
                                                 ?>
-                                                <tr id="row<?php echo $row['id']; ?>">
-                                                    <td scope="row"><?php echo $row['tracking_number']; ?></td>
+                                                <tr id="row<?php echo $row1['id']; ?>">
+                                                    <td scope="row"><?php echo $row1['tracking_number']; ?></td>
                                                     <td>
                                                         <?php
-                                                        $status_id = $row['status_id'];
+                                                        $status_id = $row1['status_id'];
                                                         $query_sta = "select * from status where id='$status_id' LIMIT 1";
                                                         $result_sta = mysqli_query($con, $query_sta);
                                                         $row_sta = mysqli_fetch_assoc($result_sta);
                                                         echo $row_sta['name'];
                                                         ?>
                                                     </td>
-                                                    <td><?php echo date('d/m/Y', $row['date_stamp']);?></td>
-                                                    <td><?php echo $row['remark'] ?></td>
+                                                    <td><?php echo date('d/m/Y', $row1['date_stamp']);?></td>
+                                                    <td><?php echo $row1['remark'] ?></td>
                                                     <td>
                                                         <?php
-                                                        if (isset($row['image_path']) && !empty($row['image_path'])) {
+                                                        if (isset($row1['image_path']) && !empty($row1['image_path'])) {
                                                             ?>
-                                                            <button class='btn btn-primary' id='<?php echo "../../admin/".$row['image_path'] ?>' onclick='imageFunction(this.id)'>View Image</button>
+                                                            <button class='btn btn-primary' id='<?php echo "../../admin/".$row1['image_path'] ?>' onclick='imageFunction(this.id)'>View Image</button>
                                                             <?php
                                                         } else {
                                                             ?>
@@ -196,20 +196,20 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-primary"
-                                                           href="single.php?tracking_number=<?php echo $row['tracking_number']; ?>"><i
+                                                           href="single.php?tracking_number=<?php echo $row1['tracking_number']; ?>"><i
                                                                 class="fa fa-eye"></i></a>
                                                         <a class="btn btn-info"
-                                                           href="edit.php?id=<?php echo $row['id']; ?>"><i
+                                                           href="edit.php?id=<?php echo $row1['id']; ?>"><i
                                                                 class="fa fa-edit"></i></a>
                                                         <button class="btn btn-danger" onclick="deleteFunction(this.id)"
-                                                                id="<?php echo $row['id']; ?>"><i
+                                                                id="<?php echo $row1['id']; ?>"><i
                                                                 class="fa fa-trash"></i>
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                <?php /*$flag = 1; $image_id = $row1['image_path'];
+                                                <?php $flag = 1; $image_id = $row1['image_path'];
                                             }
-                                        }*/
+                                        }
                                         ?>
 
                                         <?php
