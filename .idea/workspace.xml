@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3732ca05-6bfe-4c7a-97ea-9f49efe0326d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/upload/3719263cb0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/upload/70c9735631.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/station/tracking-numbers/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/head.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/scripts_file.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/sidebar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/logout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/single.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/tracking-list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/stations/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/configure.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/configure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/includes/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/includes/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/includes/scripts_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/includes/scripts_file.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/includes/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/includes/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/station/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/station/tracking-numbers/single.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/single.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,15 +54,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/upload/default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\xampp\htdocs\logistic\admin\upload\default" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\xampp\htdocs\logistic\assets" />
       <recent name="G:\xampp\htdocs\logistic\admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\xampp\htdocs\logistic\customer" />
+      <recent name="G:\xampp\htdocs\logistic\admin\upload\default" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -92,7 +93,7 @@
       <workItem from="1577178692468" duration="7306000" />
       <workItem from="1577354137637" duration="1339000" />
       <workItem from="1577504579817" duration="23163000" />
-      <workItem from="1577675027326" duration="6151000" />
+      <workItem from="1577675027326" duration="11561000" />
     </task>
     <servers />
   </component>
@@ -116,11 +117,11 @@
     </state>
     <state x="488" y="149" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577340066323" />
     <state x="549" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1577514225733" />
-    <state x="604" y="343" key="NewPhpFileDialog" timestamp="1577678062348">
+    <state x="648" y="366" key="NewPhpFileDialog" timestamp="1577686342424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="537" y="303" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1577342169965" />
-    <state x="604" y="343" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1577678062348" />
+    <state x="648" y="366" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1577686342424" />
     <state x="390" y="125" width="586" height="478" key="find.popup" timestamp="1577182095347">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

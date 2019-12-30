@@ -1,5 +1,5 @@
 <?php
-require_once("../../includes/configure.php");
+require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
 Session::checkSession();
@@ -7,16 +7,15 @@ if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $tracking_sidebar = "active";
-$tracking_view = "active";
-$tracking_menu = "menu-open";
-$tracking_number = $_GET['tracking_number'];
-$title = $tracking_number." | Station";
-$station_id = Session::get('id');
-$query_prefix = "select * from station_prefix where station_id='$station_id' LIMIT 1";
-$result_prefix = mysqli_query($con, $query_prefix);
-$row_prefix = mysqli_fetch_assoc($result_prefix);
-$station_prefix_id = $row_prefix['id'];
-$query = "SELECT * FROM tracking_numbers WHERE tracking_number='$tracking_number' AND  station_prefix_id=$station_prefix_id ORDER BY id DESC ";
+$title = "Tracking Number View | Customer";
+$receiver_id = Session::get('id');
+
+$total_pages = $con->query("SELECT * FROM tracking_numbers WHERE receiver_id=$receiver_id group by tracking_number")->num_rows;
+
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+$num_results_on_page = 10;
+$calc_page = ($page - 1) * $num_results_on_page;
+$query = "SELECT * FROM tracking_numbers WHERE receiver_id=$receiver_id group by tracking_number LIMIT  $calc_page,$num_results_on_page ";
 $result = mysqli_query($con, $query);
 
 ?>
@@ -26,7 +25,7 @@ $result = mysqli_query($con, $query);
 <html lang="en">
 
 <?php
-include(ROOT_PATH . "station/includes/head.php"); ?>
+include(ROOT_PATH . "customer/includes/head.php"); ?>
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -34,8 +33,8 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
 
     <!-- Navbar -->
     <?php
-    include(ROOT_PATH . "station/includes/header.php");
-    include(ROOT_PATH . "station/includes/sidebar.php");
+    include(ROOT_PATH . "customer/includes/header.php");
+    include(ROOT_PATH . "customer/includes/sidebar.php");
     ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -53,6 +52,7 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+
                                 <table class="table table-bordered" id="result" width="100%" cellspacing="0">
                                     <thead>
                                     <style type="text/css">
@@ -139,6 +139,7 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                         <th>Date Stamp</th>
                                         <th>Remark</th>
                                         <th>Image</th>
+
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -151,13 +152,13 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                             <td>
                                                 <?php
                                                 $status_id = $row['status_id'];
-                                                $query_status = "SELECT * FROM status WHERE id='$status_id' LIMIT 1";
-                                                $result_status = mysqli_query($con, $query_status);
-                                                $row_status = mysqli_fetch_assoc($result_status);
-                                                echo $row_status['name'];
+                                                $query_sta = "select * from status where id='$status_id' LIMIT 1";
+                                                $result_sta = mysqli_query($con, $query_sta);
+                                                $row_sta = mysqli_fetch_assoc($result_sta);
+                                                echo $row_sta['name'];
                                                 ?>
                                             </td>
-                                            <td><?php echo date('d/m/Y', $row['date_stamp']); ?></td>
+                                            <td><?php echo date('d/m/Y', $row['date_stamp']);?></td>
                                             <td><?php echo $row['remark'] ?></td>
                                             <td>
                                                 <?php
@@ -173,12 +174,9 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                                 ?>
                                             </td>
                                             <td>
-                                                <a class="btn btn-info"
-                                                   href="edit.php?id=<?php echo $row['id']; ?>"><i
-                                                        class="fa fa-edit"></i></a>
-                                                <button class="btn btn-danger" onclick="deleteFunction(this.id)"
-                                                        id="<?php echo $row['id']; ?>"><i
-                                                        class="fa fa-trash"></i>
+                                                <a class="btn btn-primary"
+                                                   href="single.php?tracking_number=<?php echo $row['tracking_number']; ?>"><i
+                                                        class="fa fa-eye"></i></a>
                                                 </button>
                                             </td>
                                         </tr>
@@ -187,6 +185,99 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                     ?>
                                     </tbody>
                                 </table>
+                            </div>
+                            <!--Pagination-->
+                            <div class="card-footer clearfix">
+                                <style type="text/css">
+                                    .pagination {
+                                        list-style-type: none;
+                                        padding: 5px 5px;
+                                        display: inline-flex;
+                                        justify-content: space-between;
+                                        box-sizing: border-box;
+                                    }
+
+                                    .pagination li {
+                                        box-sizing: border-box;
+                                        padding-right: 10px;
+                                    }
+
+                                    .pagination li a {
+                                        box-sizing: border-box;
+                                        background-color: #e2e6e6;
+                                        padding: 12px;
+                                        text-decoration: none;
+                                        font-size: 12px;
+                                        font-weight: bold;
+                                        color: #616872;
+                                        border-radius: 4px;
+                                    }
+
+                                    .pagination li a:hover {
+                                        background-color: #d4dada;
+                                    }
+
+                                    .pagination .next a, .pagination .prev a {
+                                        text-transform: uppercase;
+                                        font-size: 12px;
+                                    }
+
+                                    .pagination .currentpage a {
+                                        background-color: #518acb;
+                                        color: #fff;
+                                    }
+
+                                    .pagination .currentpage a:hover {
+                                        background-color: #518acb;
+                                    }
+                                </style>
+                                <?php if (ceil($total_pages / $num_results_on_page) > 0): ?>
+                                    <ul class="pagination  pull-right">
+                                        <?php if ($page > 1): ?>
+                                            <li class="prev"><a
+                                                    href="view.php?page=<?php echo $page - 1 ?>">Prev</a></li>
+                                        <?php endif; ?>
+
+                                        <?php if ($page > 3): ?>
+                                            <li class="start"><a href="view.php?page=1">1</a></li>
+                                            <li class="dots">...</li>
+                                        <?php endif; ?>
+
+                                        <?php if ($page - 2 > 0): ?>
+                                            <li class="page"><a
+                                                href="view.php?page=<?php echo $page - 2 ?>"><?php echo $page - 2 ?></a>
+                                            </li><?php endif; ?>
+                                        <?php if ($page - 1 > 0): ?>
+                                            <li class="page"><a
+                                                href="view.php?page=<?php echo $page - 1 ?>"><?php echo $page - 1 ?></a>
+                                            </li><?php endif; ?>
+
+                                        <li class="currentpage"><a
+                                                href="view.php?page=<?php echo $page ?>"><?php echo $page ?></a>
+                                        </li>
+
+                                        <?php if ($page + 1 < ceil($total_pages / $num_results_on_page) + 1): ?>
+                                            <li class="page"><a
+                                                href="view.php?page=<?php echo $page + 1 ?>"><?php echo $page + 1 ?></a>
+                                            </li><?php endif; ?>
+                                        <?php if ($page + 2 < ceil($total_pages / $num_results_on_page) + 1): ?>
+                                            <li class="page"><a
+                                                href="view.php?page=<?php echo $page + 2 ?>"><?php echo $page + 2 ?></a>
+                                            </li><?php endif; ?>
+
+                                        <?php if ($page < ceil($total_pages / $num_results_on_page) - 2): ?>
+                                            <li class="dots">...</li>
+                                            <li class="end"><a
+                                                    href="view.php?page=<?php echo ceil($total_pages / $num_results_on_page) ?>"><?php echo ceil($total_pages / $num_results_on_page) ?></a>
+                                            </li>
+                                        <?php endif; ?>
+
+                                        <?php if ($page < ceil($total_pages / $num_results_on_page)): ?>
+                                            <li class="next"><a
+                                                    href="view.php?page=<?php echo $page + 1 ?>">Next</a></li>
+                                        <?php endif; ?>
+                                    </ul>
+                                <?php endif; ?>
                             </div>
                             <div id="myModal" class="modal">
                                 <span class="close">&times;</span>
@@ -200,69 +291,8 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
             </div>
         </section>
     </div>
-    <?php include(ROOT_PATH . "station/includes/footer.php"); ?>
+    <?php include(ROOT_PATH . "customer/includes/footer.php"); ?>
 </div>
-<?php include(ROOT_PATH . "station/includes/scripts_file.php"); ?>
-
-<?php
-if (@$_SESSION['success']) {
-    ?>
-    <script>
-        Swal.fire('Success!', '<?php echo $_SESSION['success'];?>', 'success');
-    </script>
-    <?php
-    unset($_SESSION['success']);
-}
-?>
-<script type="text/javascript">
-
-    function deleteFunction(id) {
-        var id = id;
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.value) {
-                $.ajax({
-                    type: "POST",
-                    url: "delete.php",
-                    data: {id: id},
-                    success: function (data) {
-                        if (data == "YES") {
-                            $("#row" + id).remove();
-                        } else {
-                            alert("can't delete the row")
-                        }
-                    }
-                });
-                Swal.fire(
-                    'Deleted!',
-                    'Selected Tracking Number has been deleted.',
-                    'success'
-                );
-            }
-        })
-    }
-
-
-    var modal = document.getElementById("myModal");
-    var modalImg = document.getElementById("img01");
-
-    function imageFunction(id) {
-
-        modal.style.display = "block";
-        modalImg.src = id;
-    }
-
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-</script>
+<?php include(ROOT_PATH . "customer/includes/scripts_file.php"); ?>
 </body>
 </html>
