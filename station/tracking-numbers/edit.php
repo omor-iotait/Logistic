@@ -12,32 +12,31 @@ $tracking_add = "active";
 $tracking_menu = "menu-open";
 $title = "Tracking Number Add | Admin";
 $id = $_GET['id'];
+$station_id = Session::get('id');
 $query = "select * from tracking_numbers where id='$id' LIMIT 1";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
-$query_prefix = "SELECT * FROM station_prefix";
-$result_prefix = mysqli_query($con, $query_prefix);
+
 $query_status = "SELECT * FROM status";
 $result_status = mysqli_query($con, $query_status);
-$query_customer = "SELECT * FROM customers";
+$query_customer = "SELECT * FROM customers WHERE created_by='$station_id'";
 $result_customer = mysqli_query($con, $query_customer);
-$query_receiver = "SELECT * FROM customers";
+$query_receiver = "SELECT * FROM customers WHERE created_by='$station_id'";
 $result_receiver = mysqli_query($con, $query_receiver);
 if (@$_POST['submit']) {
     $tracking_number = mysqli_real_escape_string($con, $_POST['tracking_number']);
     $date_stamp = mysqli_real_escape_string($con, $_POST['date_stamp']);
     $date = strtotime($date_stamp);
-    $station_prefix_id = mysqli_real_escape_string($con, $_POST['station_prefix_id']);
     $status_id = mysqli_real_escape_string($con, $_POST['status_id']);
     $remark = mysqli_real_escape_string($con, $_POST['remark']);
     $sender_id = mysqli_real_escape_string($con, $_POST['sender_id']);
     $receiver_id = mysqli_real_escape_string($con, $_POST['receiver_id']);
 
     if(!file_exists($_FILES['image']['tmp_name']) || !is_uploaded_file($_FILES['image']['tmp_name'])){
-        $query1 = "UPDATE tracking_numbers SET tracking_number = '$tracking_number',station_prefix_id='$station_prefix_id',date_stamp = '$date',status_id = '$status_id',remark = '$remark',sender_id='$sender_id',receiver_id='$receiver_id' WHERE id='$id'";
+        $query1 = "UPDATE tracking_numbers SET tracking_number = '$tracking_number',date_stamp = '$date',status_id = '$status_id',remark = '$remark',sender_id='$sender_id',receiver_id='$receiver_id' WHERE id='$id'";
         if ($con->query($query1) === TRUE) {
             $_SESSION['success'] = "Selected Tracking info updated successfully";
-            header("location:".BASE_URL."admin/tracking-numbers/view.php");
+            header("location:".BASE_URL."station/tracking-numbers/view.php");
             exit(0);
         } else {
             $_SESSION['error'] = "Tracking info Not updated!";
@@ -66,13 +65,13 @@ if (@$_POST['submit']) {
             $oldh = imagesy($uploadedImage);
             $temp = imagecreatetruecolor($w, $h);
             imagecopyresampled($temp, $uploadedImage, 0, 0, 0, 0, $w, $h, $oldw, $oldh);
-            imagejpeg($temp, "../upload/" . $unique_image);
+            imagejpeg($temp, "../../admin/upload/" . $unique_image);
         }
 
-        $query2 = "UPDATE tracking_numbers SET tracking_number = '$tracking_number',station_prefix_id='$station_prefix_id',date_stamp = '$date',status_id = '$status_id',remark = '$remark',sender_id='$sender_id',receiver_id='$receiver_id',image_path='$uploaded_image' WHERE id='$id'";
+        $query2 = "UPDATE tracking_numbers SET tracking_number = '$tracking_number',date_stamp = '$date',status_id = '$status_id',remark = '$remark',sender_id='$sender_id',receiver_id='$receiver_id',image_path='$uploaded_image' WHERE id='$id'";
         if ($con->query($query2) === TRUE) {
             $_SESSION['success'] = "Selected Tracking info updated successfully";
-            header("location:".BASE_URL."admin/tracking-numbers/view.php");
+            header("location:".BASE_URL."station/tracking-numbers/view.php");
             exit(0);
         } else {
             $message = "Tracking Info not Updated.";
@@ -85,13 +84,13 @@ if (@$_POST['submit']) {
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include(ROOT_PATH . "admin/includes/head.php");
+include(ROOT_PATH . "station/includes/head.php");
 ?>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
     <?php
-    include(ROOT_PATH . "admin/includes/header.php");
-    include(ROOT_PATH . "admin/includes/sidebar.php");
+    include(ROOT_PATH . "station/includes/header.php");
+    include(ROOT_PATH . "station/includes/sidebar.php");
     ?>
     <div class="content-wrapper">
         <br>
@@ -111,20 +110,6 @@ include(ROOT_PATH . "admin/includes/head.php");
                                         <label for="tracking_number">Tracking Number</label>
                                         <input type="text" class="form-control" name="tracking_number" id="tracking_number" value="<?php echo $row['tracking_number']?>"
                                                placeholder="Enter Tracking Number">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="station_prefix_id">Station Prefix</label>
-                                        <select id="station_prefix_id" name="station_prefix_id"
-                                                class="form-control form-control-md">
-                                            <?php
-                                            while($row_prefix = $result_prefix->fetch_assoc()) {
-                                                ?>
-                                                <option value="<?php echo @$row_prefix['id'];?>" <?php echo ($row['station_prefix_id'] == $row_prefix['id'] ? "selected": "")?> ><?php echo @$row_prefix['name'];?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -148,7 +133,7 @@ include(ROOT_PATH . "admin/includes/head.php");
 
                                     <div class="form-group">
                                         <label for="image">Select Image</label>
-                                        <img src="<?php echo "../".$row['image_path']?>" height="50" width="70">
+                                        <img src="<?php echo "../../admin/".$row['image_path']?>" height="50" width="70">
                                         <input type="file" name="image" id="image" class="image">
                                     </div>
 
@@ -198,9 +183,9 @@ include(ROOT_PATH . "admin/includes/head.php");
             </div>
         </section>
     </div>
-    <?php include(ROOT_PATH . "admin/includes/footer.php"); ?>
+    <?php include(ROOT_PATH . "station/includes/footer.php"); ?>
 </div>
-<?php include(ROOT_PATH . "admin/includes/scripts_file.php"); ?>
+<?php include(ROOT_PATH . "station/includes/scripts_file.php"); ?>
 <script type="text/javascript">
 
 

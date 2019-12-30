@@ -14,15 +14,18 @@ $title = "Tracking Number Add | Station";
 $station_id = Session::get('id');
 $query_status = "SELECT * FROM status";
 $result_status = mysqli_query($con, $query_status);
+$query_prefix = "select * from station_prefix where station_id='$station_id' LIMIT 1";
+$result_prefix = mysqli_query($con, $query_prefix);
+$row_prefix = mysqli_fetch_assoc($result_prefix);
+$station_prefix_id = $row_prefix['id'];
 $query_customer = "SELECT * FROM customers WHERE created_by='$station_id'";
 $result_customer = mysqli_query($con, $query_customer);
-$query_receiver = "SELECT * FROM customers";
+$query_receiver = "SELECT * FROM customers WHERE created_by='$station_id'";
 $result_receiver = mysqli_query($con, $query_receiver);
 if (@$_POST['submit']) {
     $tracking_number = mysqli_real_escape_string($con, $_POST['tracking_number']);
     $date_stamp = mysqli_real_escape_string($con, $_POST['date_stamp']);
     $date = strtotime($date_stamp);
-    $station_prefix_id = mysqli_real_escape_string($con, $_POST['station_prefix_id']);
     $status_id = mysqli_real_escape_string($con, $_POST['status_id']);
     $remark = mysqli_real_escape_string($con, $_POST['remark']);
     $sender_id = mysqli_real_escape_string($con, $_POST['sender_id']);
@@ -53,14 +56,14 @@ if (@$_POST['submit']) {
             $oldh = imagesy($uploadedImage);
             $temp = imagecreatetruecolor($w, $h);
             imagecopyresampled($temp, $uploadedImage, 0, 0, 0, 0, $w, $h, $oldw, $oldh);
-            imagejpeg($temp, "../upload/" . $unique_image);
+            imagejpeg($temp, "../../admin/upload/" . $unique_image);
         }
     }
 
     $query = "INSERT INTO tracking_numbers(tracking_number,station_prefix_id,status_id,date_stamp,image_path,remark,sender_id,receiver_id) VALUES('$tracking_number','$station_prefix_id','$status_id','$date','$uploaded_image','$remark','$sender_id','$receiver_id')";
     if ($con->query($query) === TRUE) {
         $_SESSION['success'] = "New tracking info created successfully";
-        header("location:".BASE_URL."admin/tracking-numbers/add.php");
+        header("location:".BASE_URL."station/tracking-numbers/view.php");
         exit(0);
     } else {
         $_SESSION['error'] = "Tracking info Not Inserted!";

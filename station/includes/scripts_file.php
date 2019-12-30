@@ -5,6 +5,7 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo BASE_URL; ?>assets/scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script src="<?php echo BASE_URL; ?>assets/all/datepicker/js/bootstrap-datepicker.min.js"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
