@@ -3,13 +3,13 @@ require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
 
-Session::checkSession();
+Session::checkCustomerSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $customer_sidebar = "active";
 $title = "My Account | Customer";
-$id = Session::get('id');
+$id = Session::get('customer_id');
 $query = "select * from customers where id='$id' LIMIT 1";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);

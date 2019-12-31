@@ -6,7 +6,7 @@ include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
 include(ROOT_PATH . "station/includes/head.php");
 
-Session::checklogin();
+Session::checkStationLogin();
 if (isset($_POST['username'])) {
 
     $username = $_POST['username'];
@@ -19,7 +19,7 @@ if (isset($_POST['username'])) {
     $result = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($result) == 1) {
-        Session::set('login', true);
+        Session::set('station-login', true);
         while($row = $result->fetch_assoc()) {
             Session::set('station', $row['name']);
             Session::set('id', $row['id']);

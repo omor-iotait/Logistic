@@ -20,15 +20,47 @@ class Session
         session_destroy();
         header("Location:login.php");
     }
-    public static function checkSession(){
+    public static function checkAdminSession(){
         self::init();
-        if(self::get("login") == false){
-            self::destroy();
+        if(self::get("admin-login") == false){
+            unset($_SESSION["admin-login"]);
+            header("Location:login.php");
         }
     }
-    public static function checklogin(){
+
+    public static function checkStationSession(){
         self::init();
-        if(self::get("login") == true){
+        if(self::get("station-login") == false){
+            unset($_SESSION["station-login"]);
+            header("Location:login.php");
+        }
+    }
+
+    public static function checkCustomerSession(){
+        self::init();
+        if(self::get("customer-login") == false){
+            unset($_SESSION["customer-login"]);
+            header("Location:login.php");
+        }
+    }
+
+    public static function checkAdminLogin(){
+        self::init();
+        if(self::get("admin-login") == true){
+            header("Location:index.php");
+        }
+    }
+
+    public static function checkStationLogin(){
+        self::init();
+        if(self::get("station-login") == true){
+            header("Location:index.php");
+        }
+    }
+
+    public static function checkCustomerLogin(){
+        self::init();
+        if(self::get("customer-login") == true){
             header("Location:index.php");
         }
     }

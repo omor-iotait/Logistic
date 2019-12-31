@@ -1,7 +1,8 @@
 <?php
 session_start();
-unset($_SESSION['username']);
-session_destroy();
+unset($_SESSION['station']);
+unset($_SESSION['id']);
+unset($_SESSION['station-login']);
 
 header("Location: login.php");
 exit;

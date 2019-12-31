@@ -4,12 +4,12 @@
 <?php require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
-Session::checkSession();
+Session::checkAdminSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $dashboard_sidebar = "active";
-$title = "Dashboard | station";
+$title = "Dashboard | Admin";
 include(ROOT_PATH . "admin/includes/head.php");
 ?>
 

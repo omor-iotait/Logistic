@@ -4,7 +4,7 @@
 <?php require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
-Session::checkSession();
+Session::checkStationSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }

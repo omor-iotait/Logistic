@@ -1,8 +1,9 @@
 <?php
+use mysql_xdevapi\BaseResult;
 require_once("../../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
-Session::checkSession();
+Session::checkAdminSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
@@ -27,20 +28,26 @@ $receiver_id = $row_track['receiver_id'];
 $query_receiver = "select * from customers where id='$receiver_id' LIMIT 1";
 $result_receiver = mysqli_query($con, $query_receiver);
 $row_receiver = mysqli_fetch_assoc($result_receiver);
-
+$tracking_number = $row_prefix['name'].$tracking_number;
 require_once '../../vendor/autoload.php';
 
-$mpdf = new \Mpdf\Mpdf();
+$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4']);
+
 $html='<!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>PDF Generate</title>
 </head>
-
-
+<style>
+@page {
+    margin: 0mm 10mm 0mm 10mm;
+}
+</style>
 <body>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="../images/amberlogic.png" style="hight:10px; width: 540px;">
 <table border="1" cellspacing="0" cellpadding="0" width="661" id="printablessArea">
     <tbody>
     <tr>
@@ -50,7 +57,8 @@ $html='<!DOCTYPE html>
         </td>
         <td width="77" colspan="2" rowspan="2" valign="top">
         </td>
-        <td width="187" colspan="2" rowspan="2" valign="top">Tracking Number
+        <td width="187" colspan="2" rowspan="2" valign="top">
+        <br>&nbsp;&nbsp;&nbsp;'. $tracking_number.'
         </td>
         <td width="132" colspan="3" valign="top">Customer reference
         </td>
@@ -76,7 +84,12 @@ $html='<!DOCTYPE html>
         </td>
         <td width="16" valign="top">2
         </td>
-        <td width="249" colspan="3" rowspan="5" valign="top">lorem ipsum
+        <td width="249" colspan="3" rowspan="5" valign="top">
+        '.$row_receiver['name'].'<br>
+        '.$row_receiver['address'].'<br>
+        '.$row_receiver['city'].','.$row_station['state'].','.$row_station['post_code'].'<br>
+        '.$row_receiver['country'].'<br><br>
+        PHONE: '.$row_receiver['contact_number'].'
         </td>
         <td width="20" colspan="2" valign="top">4
         </td>
@@ -86,7 +99,7 @@ $html='<!DOCTYPE html>
         </td>
     </tr>
     <tr>
-        <td width="16" rowspan="4" valign="top">consign
+        <td width="16" rowspan="4" valign="top">CONSIGNEE
         </td>
         <td width="132" colspan="3" valign="top">E parcel
         </td>
@@ -119,7 +132,7 @@ $html='<!DOCTYPE html>
         <br>
         <br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                       
          Date: '.date('d M Y',$row_track['date_stamp']).'
         </td>
         <td width="124" colspan="3" valign="top">Customs duties
@@ -133,8 +146,8 @@ $html='<!DOCTYPE html>
     </tr>
     <tr>
         <td width="264" colspan="4" rowspan="6" valign="top">
-        <br>
-        <img src="barcode.php?codetype=Code39&size=100&text='.$tracking_number.'&print=true">
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="barcode.php?codetype=Code39&size=130&text='.$tracking_number.'&print=true">
         </td>
         <td width="16" valign="top">5
         </td>
@@ -169,8 +182,8 @@ $html='<!DOCTYPE html>
         <br>
         <br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         Date:  &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      
+         Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
         </td>
         <td width="0" height="27">
         </td>
@@ -206,6 +219,7 @@ $html='<!DOCTYPE html>
     </tbody>
 </table>
 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="../images/amberlogic.png" style="hight:10px; width: 540px;">
 <table border="1" cellspacing="0" cellpadding="0" width="661" id="printablessArea">
     <tbody>
     <tr>
@@ -215,7 +229,8 @@ $html='<!DOCTYPE html>
         </td>
         <td width="77" colspan="2" rowspan="2" valign="top">
         </td>
-        <td width="187" colspan="2" rowspan="2" valign="top">Tracking Number
+        <td width="187" colspan="2" rowspan="2" valign="top">
+        <br>&nbsp;&nbsp;&nbsp;'. $tracking_number.'
         </td>
         <td width="132" colspan="3" valign="top">Customer reference
         </td>
@@ -241,7 +256,12 @@ $html='<!DOCTYPE html>
         </td>
         <td width="16" valign="top">2
         </td>
-        <td width="249" colspan="3" rowspan="5" valign="top">lorem ipsum
+        <td width="249" colspan="3" rowspan="5" valign="top">
+        '.$row_receiver['name'].'<br>
+        '.$row_receiver['address'].'<br>
+        '.$row_receiver['city'].','.$row_station['state'].','.$row_station['post_code'].'<br>
+        '.$row_receiver['country'].'<br><br>
+        PHONE: '.$row_receiver['contact_number'].'
         </td>
         <td width="20" colspan="2" valign="top">4
         </td>
@@ -251,7 +271,7 @@ $html='<!DOCTYPE html>
         </td>
     </tr>
     <tr>
-        <td width="16" rowspan="4" valign="top">consign
+        <td width="16" rowspan="4" valign="top">CONSIGNEE
         </td>
         <td width="132" colspan="3" valign="top">E parcel
         </td>
@@ -284,7 +304,7 @@ $html='<!DOCTYPE html>
         <br>
         <br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                       
          Date: '.date('d M Y',$row_track['date_stamp']).'
         </td>
         <td width="124" colspan="3" valign="top">Customs duties
@@ -298,8 +318,8 @@ $html='<!DOCTYPE html>
     </tr>
     <tr>
         <td width="264" colspan="4" rowspan="6" valign="top">
-        <br>
-        <img src="barcode.php?codetype=Code39&size=100&text='.$tracking_number.'&print=true">
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="barcode.php?codetype=Code39&size=130&text='.$tracking_number.'&print=true">
         </td>
         <td width="16" valign="top">5
         </td>
@@ -334,8 +354,8 @@ $html='<!DOCTYPE html>
         <br>
         <br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         Date:  &nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                      
+         Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/
         </td>
         <td width="0" height="27">
         </td>
@@ -375,6 +395,3 @@ $html='<!DOCTYPE html>
 $mpdf->WriteHTML($html);
 $mpdf->Output();
 ?>
-
-
-

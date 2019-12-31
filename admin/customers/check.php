@@ -1,5 +1,4 @@
 <?php
-
 require_once("../../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 

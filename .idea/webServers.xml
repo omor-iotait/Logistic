@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f473a549-8318-48c2-a4ea-0c9ca64edb15" name="logistic" url="http://ftp.muslimsolution.website">
+        <fileTransfer host="ftp.muslimsolution.website" port="21" rootFolder="/iotait.tech/logistic">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
