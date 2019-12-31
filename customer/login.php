@@ -6,7 +6,7 @@ include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
 include(ROOT_PATH . "customer/includes/head.php");
 
-Session::checklogin();
+Session::checkCustomerLogin();
 if (isset($_POST['username'])) {
 
     $username = $_POST['username'];
@@ -19,10 +19,10 @@ if (isset($_POST['username'])) {
     $result = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($result) == 1) {
-        Session::set('login', true);
+        Session::set('customer-login', true);
         while($row = $result->fetch_assoc()) {
             Session::set('customer', $row['name']);
-            Session::set('id', $row['id']);
+            Session::set('customer_id', $row['id']);
         }
 
         if (!empty($_POST["remember"])) {

@@ -2,7 +2,7 @@
 require_once("../../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
-Session::checkSession();
+Session::checkStationSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
@@ -61,84 +61,6 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
 
                                 <table class="table table-bordered" id="result" width="100%" cellspacing="0">
                                     <thead>
-                                    <style type="text/css">
-                                        .hidden {
-                                            display: none
-                                        }
-                                    </style>
-                                    <style>
-                                        .active-cyan-4 input[type=text]:focus:not([readonly]) {
-                                            border: 1px solid #4dd0e1;
-                                            box-shadow: 0 0 0 1px #4dd0e1;
-                                        }
-
-                                        .modal {
-                                            display: none; /* Hidden by default */
-                                            position: fixed; /* Stay in place */
-                                            z-index: 1; /* Sit on top */
-                                            padding-top: 100px; /* Location of the box */
-                                            margin: auto;
-                                            width: 100%; /* Full width */
-                                            height: 100%; /* Full height */
-                                            overflow: auto; /* Enable scroll if needed */
-                                            background-color: rgb(0, 0, 0); /* Fallback color */
-                                            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-                                        }
-
-                                        /* Modal Content (image) */
-                                        .modal-content {
-                                            margin: auto;
-                                            margin-right: 250px;
-                                            display: block;
-                                            width: 100%;
-                                            max-width: 600px;
-                                        }
-
-
-                                        @-webkit-keyframes zoom {
-                                            from {
-                                                -webkit-transform: scale(0)
-                                            }
-                                            to {
-                                                -webkit-transform: scale(1)
-                                            }
-                                        }
-
-                                        @keyframes zoom {
-                                            from {
-                                                transform: scale(0)
-                                            }
-                                            to {
-                                                transform: scale(1)
-                                            }
-                                        }
-
-                                        /* The Close Button */
-                                        .close {
-                                            position: absolute;
-                                            top: 75px;
-                                            right: 45px;
-                                            color: #f1f1f1;
-                                            font-size: 60px;
-                                            font-weight: bold;
-                                            transition: 0.3s;
-                                        }
-
-                                        .close:hover,
-                                        .close:focus {
-                                            color: #bbb;
-                                            text-decoration: none;
-                                            cursor: pointer;
-                                        }
-
-                                        .modal-content {
-                                            -webkit-animation-name: zoom;
-                                            -webkit-animation-duration: 0.6s;
-                                            animation-name: zoom;
-                                            animation-duration: 0.6s;
-                                        }
-
-                                    </style>
                                     <tr>
                                         <th>Tracking Number</th>
                                         <th>Status</th>
@@ -169,7 +91,10 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                                             if ($flag == 0) {
                                                 ?>
                                                 <tr id="row<?php echo $row1['id']; ?>">
-                                                    <td scope="row"><?php echo $row1['tracking_number']; ?></td>
+                                                    <td scope="row">
+                                                        <?php
+
+                                                        echo $row_prefix['name'].$row1['tracking_number']; ?></td>
                                                     <td>
                                                         <?php
                                                         $status_id = $row1['status_id'];
@@ -220,49 +145,6 @@ include(ROOT_PATH . "station/includes/head.php"); ?>
                             </div>
                             <!--Pagination-->
                             <div class="card-footer clearfix">
-                                <style type="text/css">
-                                    .pagination {
-                                        list-style-type: none;
-                                        padding: 5px 5px;
-                                        display: inline-flex;
-                                        justify-content: space-between;
-                                        box-sizing: border-box;
-                                    }
-
-                                    .pagination li {
-                                        box-sizing: border-box;
-                                        padding-right: 10px;
-                                    }
-
-                                    .pagination li a {
-                                        box-sizing: border-box;
-                                        background-color: #e2e6e6;
-                                        padding: 12px;
-                                        text-decoration: none;
-                                        font-size: 12px;
-                                        font-weight: bold;
-                                        color: #616872;
-                                        border-radius: 4px;
-                                    }
-
-                                    .pagination li a:hover {
-                                        background-color: #d4dada;
-                                    }
-
-                                    .pagination .next a, .pagination .prev a {
-                                        text-transform: uppercase;
-                                        font-size: 12px;
-                                    }
-
-                                    .pagination .currentpage a {
-                                        background-color: #518acb;
-                                        color: #fff;
-                                    }
-
-                                    .pagination .currentpage a:hover {
-                                        background-color: #518acb;
-                                    }
-                                </style>
                                 <?php if (ceil($total_pages / $num_results_on_page) > 0): ?>
                                     <ul class="pagination  pull-right">
                                         <?php if ($page > 1): ?>

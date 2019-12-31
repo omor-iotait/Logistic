@@ -2,18 +2,18 @@
 require_once("../includes/configure.php");
 include(ROOT_PATH . "includes/db.php");
 include(ROOT_PATH . "classes/Session.php");
-Session::checkSession();
+Session::checkCustomerSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $tracking_sidebar = "active";
 $title = "Tracking Number View | Customer";
-$receiver_id = Session::get('id');
+$receiver_id = Session::get('customer_id');
 
 $total_pages = $con->query("SELECT * FROM tracking_numbers WHERE receiver_id=$receiver_id group by tracking_number")->num_rows;
 
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-$num_results_on_page = 10;
+$num_results_on_page = PAGINATION;
 $calc_page = ($page - 1) * $num_results_on_page;
 $query = "SELECT * FROM tracking_numbers WHERE receiver_id=$receiver_id group by tracking_number LIMIT  $calc_page,$num_results_on_page ";
 $result = mysqli_query($con, $query);

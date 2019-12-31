@@ -17,6 +17,10 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/css/adminlte.min.css">
+    <!--Pagination Style-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/css/pagination.css">
+    <!--Image show Modal-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/css/image-modal.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/all/overlayScrollbars/css/OverlayScrollbars.min.css">
 

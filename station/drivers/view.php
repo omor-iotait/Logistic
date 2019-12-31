@@ -7,7 +7,7 @@ $query = "select * from drivers";
 $result = mysqli_query($con, $query);
 
 include(ROOT_PATH . "classes/Session.php");
-Session::checkSession();
+Session::checkStationSession();
 if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
