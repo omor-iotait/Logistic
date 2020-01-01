@@ -2,180 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3732ca05-6bfe-4c7a-97ea-9f49efe0326d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/images/amberlogic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/all/css/image-modal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/all/css/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/db_logistic.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers/check.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/customers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/drivers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/drivers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/drivers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/sidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/stations/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/stations/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/stations/prefix.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/prefix.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/stations/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/stations/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/pdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/pdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/single.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/single.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/status-add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/status-add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/status-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/status-edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/status-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/status-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/tracking-numbers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tracking-numbers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/includes/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/sidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/my-account.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/my-account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/single.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/single.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/tracking-list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/tracking-list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/FAQ.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/changelog.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/__construct.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/acceptpagebreak.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/addfont.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/addlink.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/addpage.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/aliasnbpages.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/cell.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/close.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/error.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/footer.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/getpageheight.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/getpagewidth.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/getstringwidth.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/getx.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/gety.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/header.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/image.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/index.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/line.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/link.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/ln.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/multicell.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/output.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/pageno.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/rect.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setauthor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setautopagebreak.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setcompression.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setcreator.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setdisplaymode.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setdrawcolor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setfillcolor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setfont.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setfontsize.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setkeywords.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setleftmargin.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setlinewidth.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setlink.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setmargins.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setrightmargin.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setsubject.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/settextcolor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/settitle.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/settopmargin.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setx.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/setxy.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/sety.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/text.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/doc/write.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/courier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/courierb.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/courierbi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/courieri.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/helvetica.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/helveticab.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/helveticabi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/helveticai.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/symbol.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/times.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/timesb.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/timesbi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/timesi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/font/zapfdingbats.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/fpdf.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/fpdf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/install.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1250.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1251.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1252.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1253.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1254.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1255.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1257.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp1258.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/cp874.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-1.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-11.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-15.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-16.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-2.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-4.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-5.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-7.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/iso-8859-9.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/koi8-r.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/koi8-u.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/makefont.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/makefont/ttfparser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/20k_c1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/20k_c2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/calligra.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/calligra.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/calligra.z" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/countries.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/index.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/makefont.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto1.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto1.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto2.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto3.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto3.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto4.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto4.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto5.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto5.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto6.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto6.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto7.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpdf/tutorial/tuto7.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/customers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/customers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/customers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/customers/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/customers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/customers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/drivers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/drivers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/drivers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/drivers/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/drivers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/drivers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/includes/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/includes/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/tracking_numbers.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db_logistic.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/configure.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/configure.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistic.zip" beforeDir="false" afterPath="$PROJECT_DIR$/logistic.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/station/includes/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/includes/sidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/station/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/prefix.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/prefix.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/stations/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/stations/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/stations/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/stations/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/stations/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/stations/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/assign.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/single.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/single.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/tracking-numbers/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/station/tracking-numbers/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/upload/6adf29f681.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/upload/8c1ca94cf1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/station/upload/aa8ff4b517.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,18 +73,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/tracking-numbers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\xampp\htdocs\logistic\assets" />
-      <recent name="G:\xampp\htdocs\logistic\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\xampp\htdocs\logistic\admin\images" />
       <recent name="G:\xampp\htdocs\logistic\admin\tracking-numbers" />
       <recent name="G:\xampp\htdocs\logistic\customer" />
       <recent name="G:\xampp\htdocs\logistic\admin\upload\default" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\xampp\htdocs\logistic\assets" />
+      <recent name="G:\xampp\htdocs\logistic\admin" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -275,7 +117,8 @@
       <workItem from="1577504579817" duration="23163000" />
       <workItem from="1577675027326" duration="24248000" />
       <workItem from="1577706868751" duration="598000" />
-      <workItem from="1577762619482" duration="10626000" />
+      <workItem from="1577762619482" duration="14856000" />
+      <workItem from="1577849025725" duration="1869000" />
     </task>
     <servers />
   </component>
