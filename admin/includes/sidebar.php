@@ -4,16 +4,10 @@
         <span class="brand-text font-weight-light"><img src="<?php echo BASE_URL?>admin/images/logo.png" height="45px" width="200px"></span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-
                 <li class="nav-item ">
                     <a href="<?php  echo BASE_URL; ?>admin/index.php" class="nav-link <?php echo @$dashboard_sidebar;?>">
                         <i class="nav-icon fa fa-home"></i>
@@ -94,6 +88,12 @@
                             <a href="<?php  echo BASE_URL; ?>admin/drivers/view.php" class="nav-link <?php echo @$driver_view;?>">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Driver List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php  echo BASE_URL; ?>admin/drivers/request.php" class="nav-link <?php echo @$driver_request;?>">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Delivery Request</p>
                             </a>
                         </li>
                     </ul>

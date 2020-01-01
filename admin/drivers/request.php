@@ -7,15 +7,15 @@ if (isset($_GET['action']) && $_GET['action'] == "logout") {
     Session::destroy();
 }
 $driver_sidebar = "active";
-$driver_view = "active";
+$driver_request = "active";
 $driver_menu = "menu-open";
-$title = "Driver View | Admin";
-$total_pages = $con->query('SELECT * FROM drivers')->num_rows;
+$title = "Driver Request | Admin";
+$total_pages = $con->query('SELECT * FROM driver_requests')->num_rows;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $num_results_on_page = PAGINATION;
 $calc_page = ($page - 1) * $num_results_on_page;
-$query = "SELECT * FROM drivers ORDER BY id LIMIT $calc_page,$num_results_on_page";
-$result = mysqli_query($con, $query);
+$query_request = "SELECT * FROM driver_requests WHERE deliver_status=1 ORDER BY id LIMIT $calc_page,$num_results_on_page";
+$result_request = mysqli_query($con, $query_request);
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active"><a href="#">Driver List</a></li>
+                            <li class="breadcrumb-item active"><a href="#">Driver Request List</a></li>
                         </ol>
                     </div>
                 </div>
@@ -59,50 +59,32 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Driver List Table</h3>
+                                <h3 class="card-title">Driver Request Table</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <select id="mySelect">
-                                    <option>Select</option>
-                                    <option data-column="#id" value="gh">ID</option>
-                                    <option data-column="#name">name</option>
-
-                                    <option data-column="#email">Email</option>
-                                    <option data-column="#c_number">Contact Number</option>
-                                    <option data-column="#v_number">Vehicle Number</option>
-                                    <option data-column="#v_type">Vehicle Type</option>
-                                    <option data-column="#zone">Zone</option>
-                                    <option data-column="#country">Country</option>
-                                    <option data-column="#city">City</option>
-                                    <option data-column="#state">State</option>
-                                    <option data-column="#post_code">Postal Code</option>
-                                    <option data-column="#address">Address</option>
-                                    <option data-column="#label">label</option>
-                                </select>
                                 <table class="table table-bordered" style="table-layout: fixed">
                                     <thead>
                                     <tr>
                                         <th id="id">#</th>
-                                        <th id="name">Customer Name</th>
-                                        <th id="email">Email</th>
-                                        <th id="c_number">Contact Number</th>
-                                        <th id="v_number">Vehicle Number</th>
-                                        <th id="v_type">Vehicle Type</th>
-                                        <th id="zone">Zone</th>
-                                        <th id="country">Country</th>
-                                        <th id="city">City</th>
-                                        <th id="state">State</th>
-                                        <th id="post_code">Postal Code</th>
-                                        <th id="address">Address</th>
-                                        <th id="label">Label</th>
+                                        <th id="">Driver Name</th>
+                                        <th id="">Tracking Number</th>
+                                        <th id="">Status</th>
+                                        <th id="">Date</th>
+                                        <th id="">Sender</th>
+                                        <th id="">Receiver</th>
+                                        <th id="">Image</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                    while ($row = mysqli_fetch_assoc($result)) {
+                                    while ($row_request = mysqli_fetch_assoc($result_request)) {
+                                        $tracking_number_id = $row_request['tracking_number_id'];
+                                        $query_tracking_number = "select * from drivers where id='$tracking_number_id' LIMIT 1";
+                                        $result_tracking_number = mysqli_query($con, $query_tracking_number);
+                                        $row_tracking_number = mysqli_fetch_assoc($result_tracking_number);
                                         ?>
-                                        <tr id="row<?php echo $row['id']; ?>">
+                                        <tr>
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['username']; ?></td>
                                             <td><?php echo $row['email']; ?></td>
@@ -117,7 +99,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                             <td><?php echo $row['address']; ?></td>
                                             <td>
                                                 <a href="edit.php?id=<?php echo $row['id']; ?>"><span
-                                                            class="badge bg-info">Edit</span></a>
+                                                        class="badge bg-info">Edit</span></a>
                                                 <a href="#" id="<?php echo $row['id']; ?>"
                                                    onclick="deleteFunction(this.id)"><span class="badge bg-danger">Delete</span></a>
                                             </td>
@@ -132,7 +114,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                     <ul class="pagination  pull-right">
                                         <?php if ($page > 1): ?>
                                             <li class="prev"><a
-                                                        href="view.php?page=<?php echo $page - 1 ?>">Prev</a></li>
+                                                    href="view.php?page=<?php echo $page - 1 ?>">Prev</a></li>
                                         <?php endif; ?>
 
                                         <?php if ($page > 3): ?>
@@ -142,36 +124,36 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
 
                                         <?php if ($page - 2 > 0): ?>
                                             <li class="page"><a
-                                                    href="view.php?page=<?php echo $page - 2 ?>"><?php echo $page - 2 ?></a>
+                                                href="view.php?page=<?php echo $page - 2 ?>"><?php echo $page - 2 ?></a>
                                             </li><?php endif; ?>
                                         <?php if ($page - 1 > 0): ?>
                                             <li class="page"><a
-                                                    href="view.php?page=<?php echo $page - 1 ?>"><?php echo $page - 1 ?></a>
+                                                href="view.php?page=<?php echo $page - 1 ?>"><?php echo $page - 1 ?></a>
                                             </li><?php endif; ?>
 
                                         <li class="currentpage"><a
-                                                    href="view.php?page=<?php echo $page ?>"><?php echo $page ?></a>
+                                                href="view.php?page=<?php echo $page ?>"><?php echo $page ?></a>
                                         </li>
 
                                         <?php if ($page + 1 < ceil($total_pages / $num_results_on_page) + 1): ?>
                                             <li class="page"><a
-                                                    href="view.php?page=<?php echo $page + 1 ?>"><?php echo $page + 1 ?></a>
+                                                href="view.php?page=<?php echo $page + 1 ?>"><?php echo $page + 1 ?></a>
                                             </li><?php endif; ?>
                                         <?php if ($page + 2 < ceil($total_pages / $num_results_on_page) + 1): ?>
                                             <li class="page"><a
-                                                    href="view.php?page=<?php echo $page + 2 ?>"><?php echo $page + 2 ?></a>
+                                                href="view.php?page=<?php echo $page + 2 ?>"><?php echo $page + 2 ?></a>
                                             </li><?php endif; ?>
 
                                         <?php if ($page < ceil($total_pages / $num_results_on_page) - 2): ?>
                                             <li class="dots">...</li>
                                             <li class="end"><a
-                                                        href="view.php?page=<?php echo ceil($total_pages / $num_results_on_page) ?>"><?php echo ceil($total_pages / $num_results_on_page) ?></a>
+                                                    href="view.php?page=<?php echo ceil($total_pages / $num_results_on_page) ?>"><?php echo ceil($total_pages / $num_results_on_page) ?></a>
                                             </li>
                                         <?php endif; ?>
 
                                         <?php if ($page < ceil($total_pages / $num_results_on_page)): ?>
                                             <li class="next"><a
-                                                        href="view.php?page=<?php echo $page + 1 ?>">Next</a></li>
+                                                    href="view.php?page=<?php echo $page + 1 ?>">Next</a></li>
                                         <?php endif; ?>
                                     </ul>
                                 <?php endif; ?>
