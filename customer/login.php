@@ -44,7 +44,7 @@ if (isset($_POST['username'])) {
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Amber</b>Logistic</a>
+        <img src="<?php echo BASE_URL?>admin/images/logo.png" height="60px" width="300px">
     </div>
     <!-- /.login-logo -->
     <div class="card">
