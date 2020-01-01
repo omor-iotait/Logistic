@@ -58,14 +58,20 @@ if (@$_POST['submit']) {
         }
     }
 
-    $query = "INSERT INTO tracking_numbers(tracking_number,station_prefix_id,status_id,date_stamp,image_path,remark,sender_id,receiver_id) VALUES('$tracking_number','$station_prefix_id','$status_id','$date','$uploaded_image','$remark','$sender_id','$receiver_id')";
+    $query = "INSERT INTO tracking_numbers(tracking_number,station_prefix_id,sender_id,receiver_id) VALUES('$tracking_number','$station_prefix_id','$sender_id','$receiver_id')";
     if ($con->query($query) === TRUE) {
-        $_SESSION['success'] = "New tracking info created successfully";
-        header("location:".BASE_URL."admin/tracking-numbers/add.php");
-        exit(0);
+        $last_id = mysqli_insert_id($con);
+
+        $query_tracking_status = "INSERT INTO tracking_status(tracking_number_id,status_id,date_stamp,image_path,remark) VALUES('$last_id','$status_id','$date','$uploaded_image','$remark')";
+        if ($con->query($query_tracking_status) === TRUE) {
+            $_SESSION['success'] = "New tracking info created successfully";
+            header("location:".BASE_URL."admin/tracking-numbers/view.php");
+            exit(0);
+        }else{
+            $_SESSION['error'] = "Tracking Status Not Inserted!";
+        }
     } else {
         $_SESSION['error'] = "Tracking info Not Inserted!";
-
     }
 }
 ?>

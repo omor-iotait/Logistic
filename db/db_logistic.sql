@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2019 at 01:00 PM
+-- Generation Time: Jan 01, 2020 at 08:02 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -109,7 +109,7 @@ CREATE TABLE `drivers` (
 --
 
 INSERT INTO `drivers` (`id`, `username`, `password`, `name`, `email`, `contact_number`, `vehicle_number`, `vehicle_type`, `zone`, `image_path`, `country`, `state`, `city`, `post_code`, `address`, `created_at`) VALUES
-(1, 'driver1', '98c807929d21ec94ac60befdb7f00d92', 'Driver Name', 'driver@gmail.com', '01987654321', 'Reg1234556', 'Motocycle', 'Dhaka', '', 'Bangladesh', 'Dhaka', 'Dhaka', '1229', 'Nikunja, Nikunja-2 Dhaka', '2019-12-26 04:51:59'),
+(1, 'driver1', 'e10adc3949ba59abbe56e057f20f883e', 'Driver Name', 'driver@gmail.com', '01987654321', 'Reg1234556', 'Motocycle', 'Dhaka', '', 'Bangladesh', 'Dhaka', 'Dhaka', '1229', 'Nikunja, Nikunja-2 Dhaka', '2019-12-26 04:51:59'),
 (3, 'driver123', '98c807929d21ec94ac60befdb7f00d92', 'Driver Name', 'driver@gmail.com', '01987654321', 'Reg1234556', 'Motocycle', 'Dhaka', '', 'Bangladesh', 'Dhaka', 'Dhaka', '1229', 'Nikunja, Nikunja-2 Dhaka', '2019-12-26 04:51:59');
 
 -- --------------------------------------------------------
@@ -246,7 +246,34 @@ INSERT INTO `tracking_numbers` (`id`, `tracking_number`, `station_prefix_id`, `s
 (8, 'A0ert', 1, 1, '1575414000', 'upload/fd459e2c87.jpg', 'sfgv', 1, 3, NULL, '2019-12-28 04:59:12'),
 (9, 'Awer', 1, 1, '1575414000', 'upload/fd459e2c87.jpg', 'sfgv', 1, 3, NULL, '2019-12-28 04:59:12'),
 (12, 'A000012324', 1, 3, '1576537200', 'upload/70c9735631.jpg', 'tgfhvnh', 5, 3, NULL, '2019-12-30 03:53:18'),
-(13, 'A00g', 2, 2, '1575414000', 'upload/fd459e2c87.jpg', 'sfgv', 1, 3, NULL, '2019-12-28 04:59:12');
+(13, 'A00g', 2, 2, '1575414000', 'upload/fd459e2c87.jpg', 'sfgv', 1, 3, NULL, '2019-12-28 04:59:12'),
+(14, 'A000012324', 1, 2, '1579647600', 'upload/9fd64af136.jpg', 'gyijft', 1, 5, NULL, '2020-01-01 05:46:04'),
+(15, 'A00001', 1, NULL, NULL, NULL, NULL, 1, 3, NULL, '2020-01-01 06:58:10'),
+(16, 'sfv', 1, NULL, NULL, NULL, NULL, 1, 1, NULL, '2020-01-01 06:59:40'),
+(17, 'A00002', 1, NULL, NULL, NULL, NULL, 3, 5, NULL, '2020-01-01 07:01:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tracking_status`
+--
+
+CREATE TABLE `tracking_status` (
+  `id` int(11) NOT NULL,
+  `tracking_number_id` int(11) DEFAULT NULL,
+  `status_id` int(11) DEFAULT NULL,
+  `date_stamp` varchar(255) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `remark` mediumtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tracking_status`
+--
+
+INSERT INTO `tracking_status` (`id`, `tracking_number_id`, `status_id`, `date_stamp`, `image_path`, `remark`, `created_at`) VALUES
+(1, 17, 1, '1578092400', 'upload/6c01d33385.jpg', 'zxdc', '2020-01-01 07:01:00');
 
 --
 -- Indexes for dumped tables
@@ -301,6 +328,12 @@ ALTER TABLE `tracking_numbers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tracking_status`
+--
+ALTER TABLE `tracking_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -350,7 +383,13 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tracking_numbers`
 --
 ALTER TABLE `tracking_numbers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tracking_status`
+--
+ALTER TABLE `tracking_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
