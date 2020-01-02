@@ -51,6 +51,7 @@ $result = mysqli_query($con, $query);
                                     <option data-column="#unique_id">unique_id</option>
                                     <option data-column="#p_email">p_email</option>
                                     <option data-column="#s_email">s_email</option>
+                                    <option data-column="#api_key">Api Key</option>
                                     <option data-column="#label">label</option>
                                 </select>
                                 <!--<button type="button" data-column="#id">Hide/show 1st</button>
@@ -61,6 +62,11 @@ $result = mysqli_query($con, $query);
                                 <button type="button" data-column="#label">Hide/show Label</button>-->
                                 <table class="table table-bordered" style="table-layout: fixed">
                                     <thead>
+                                    <style type="text/css">
+                                        .hidden {
+                                            display: none
+                                        }
+                                    </style>
                                     <tr>
                                         <th id="id">#</th>
                                         <th id="name">Username</th>
@@ -74,6 +80,7 @@ $result = mysqli_query($con, $query);
                                         <th id="city">City</th>
                                         <th id="post_code">Post Code</th>
                                         <th id="address">Address</th>
+                                        <th id="api_key">Api Key</th>
                                         <th id="action">Action</th>
                                     </tr>
                                     </thead>
@@ -94,9 +101,12 @@ $result = mysqli_query($con, $query);
                                             <td><?php echo $row['city']; ?></td>
                                             <td><?php echo $row['post_code']; ?></td>
                                             <td><?php echo $row['address']; ?></td>
+                                            <td><?php echo $row['api_key']; ?></td>
                                             <td>
                                                 <a href="edit.php?id=<?php echo $row['id']; ?>"><span
                                                             class="badge bg-info">Edit</span></a>
+                                                <a href="key-regenerate.php?id=<?php echo $row['id']; ?>"><span
+                                                            class="badge bg-success">Key Regenerate</span></a>
                                                 <a href="#" id="<?php echo $row['id']; ?>"
                                                    onclick="deleteFunction(this.id)"><span class="badge bg-danger">Delete</span></a>
                                             </td>

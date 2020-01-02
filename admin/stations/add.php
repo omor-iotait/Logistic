@@ -26,9 +26,9 @@ if (@$_POST['submit']) {
     $city = mysqli_real_escape_string($con, $_POST['city']);
     $post_code = mysqli_real_escape_string($con, $_POST['post_code']);
     $address = mysqli_real_escape_string($con, $_POST['address']);
-
-    $query = "INSERT INTO stations(username,password,unique_id,name,primary_email,secondary_email,contact_number,country,state,city,post_code,address) 
-VALUES('$username','$password','$unique_id','$name','$primary_email','$secondary_email','$contact_number','$country','$state','$city','$post_code','$address')";
+    $api_key = bin2hex(random_bytes(32));
+    $query = "INSERT INTO stations(username,password,unique_id,name,primary_email,secondary_email,contact_number,country,state,city,post_code,address,api_key) 
+VALUES('$username','$password','$unique_id','$name','$primary_email','$secondary_email','$contact_number','$country','$state','$city','$post_code','$address','$api_key')";
     if ($con->query($query) === TRUE) {
         $_SESSION['success'] = "New Station info created successfully";
         header("location:".BASE_URL."admin/stations/view.php");

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $div = explode('.', $file_name);
                     $file_ext = strtolower(end($div));
                     $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
-                    $uploaded_image = "../../admin/upload/" . $unique_image;
+                    $uploaded_image = "upload/" . $unique_image;
                     if (in_array($file_ext, $permited) === true || !empty($uploaded_image)) {
                         $uploadedImage = imagecreatefromjpeg($file_temp);
                         $oldw = imagesx($uploadedImage);

@@ -14,7 +14,7 @@ $total_pages = $con->query('SELECT * FROM driver_requests')->num_rows;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $num_results_on_page = PAGINATION;
 $calc_page = ($page - 1) * $num_results_on_page;
-$query_request = "SELECT * FROM driver_requests WHERE deliver_status=1 ORDER BY id LIMIT $calc_page,$num_results_on_page";
+$query_request = "SELECT * FROM driver_requests ORDER BY id LIMIT $calc_page,$num_results_on_page";
 $result_request = mysqli_query($con, $query_request);
 ?>
 
@@ -71,37 +71,70 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                         <th id="">Tracking Number</th>
                                         <th id="">Status</th>
                                         <th id="">Date</th>
-                                        <th id="">Sender</th>
-                                        <th id="">Receiver</th>
+                                        <th id="">Deliver Status</th>
                                         <th id="">Image</th>
+                                        <th id="">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                     while ($row_request = mysqli_fetch_assoc($result_request)) {
                                         $tracking_number_id = $row_request['tracking_number_id'];
-                                        $query_tracking_number = "select * from drivers where id='$tracking_number_id' LIMIT 1";
+                                        $query_tracking_number = "select * from tracking_numbers where id='$tracking_number_id' LIMIT 1";
                                         $result_tracking_number = mysqli_query($con, $query_tracking_number);
                                         $row_tracking_number = mysqli_fetch_assoc($result_tracking_number);
+                                        $driver_id = $row_request['driver_id'];
+                                        $query_driver = "select * from drivers where id='$driver_id' LIMIT 1";
+                                        $result_driver = mysqli_query($con, $query_driver);
+                                        $row_driver = mysqli_fetch_assoc($result_driver);
+                                        $status_id = $row_request['status_id'];
+                                        $query_status = "select * from status where id='$status_id' LIMIT 1";
+                                        $result_status = mysqli_query($con, $query_status);
+                                        $row_status = mysqli_fetch_assoc($result_status);
                                         ?>
-                                        <tr>
-                                            <td><?php echo $row['id']; ?></td>
-                                            <td><?php echo $row['username']; ?></td>
-                                            <td><?php echo $row['email']; ?></td>
-                                            <td><?php echo $row['contact_number']; ?></td>
-                                            <td><?php echo $row['vehicle_number']; ?></td>
-                                            <td><?php echo $row['vehicle_type']; ?></td>
-                                            <td><?php echo $row['zone']; ?></td>
-                                            <td><?php echo $row['country']; ?></td>
-                                            <td><?php echo $row['city']; ?></td>
-                                            <td><?php echo $row['state']; ?></td>
-                                            <td><?php echo $row['post_code']; ?></td>
-                                            <td><?php echo $row['address']; ?></td>
+                                        <tr id="<?php echo $row_request['id']; ?>">
+                                            <td><?php echo $row_request['id']; ?></td>
+                                            <td><?php echo $row_driver['name']; ?></td>
+                                            <td><?php echo $row_tracking_number['tracking_number']; ?></td>
+                                            <td><?php echo $row_status['name']; ?></td>
+                                            <td><?php echo date('d M Y', $row_request['date_stamp']); ?></td>
+                                            <td><?php echo ($row_request['deliver_status'] ==2 ? 'Confirmed': ($row_request['deliver_status'] ==3 ? 'Rejected':'Pending')) ?></td>
                                             <td>
-                                                <a href="edit.php?id=<?php echo $row['id']; ?>"><span
-                                                        class="badge bg-info">Edit</span></a>
-                                                <a href="#" id="<?php echo $row['id']; ?>"
-                                                   onclick="deleteFunction(this.id)"><span class="badge bg-danger">Delete</span></a>
+                                                <?php
+                                                if (isset($row_request['image_path']) && !empty($row_request['image_path'])) {
+                                                    ?>
+                                                    <button class='btn btn-primary'
+                                                            id='<?php echo "../../admin/" . $row_request['image_path'] ?>'
+                                                            onclick='imageFunction(this.id)'>View Image
+                                                    </button>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <button class='btn btn-danger'
+                                                            id='../../admin/upload/default/no-image.png'
+                                                            onclick='imageFunction(this.id)'>No Image
+                                                    </button>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($row_request['deliver_status'] == 1) {
+                                                    ?>
+                                                    <a href="request-confirm.php?id=<?php echo $row_request['id']; ?>"><span
+                                                                class="badge bg-info">Confirm</span></a>
+                                                    <a href="request-reject.php?id=<?php echo $row_request['id']; ?>"><span class="badge bg-danger">Reject</span></a>
+                                                    <?php
+                                                } elseif ($row_request['deliver_status'] == 2) {
+                                                    ?>
+                                                    <a href="request-reject.php?id=<?php echo $row_request['id']; ?>">
+                                                        <span class="badge bg-danger">Reject</span></a>
+                                                <?php } elseif ($row_request['deliver_status'] == 3) {
+                                                    ?>
+                                                    <a href="request-confirm.php?id=<?php echo $row_request['id']; ?>"><span
+                                                                class="badge bg-info">Confirm</span></a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -114,7 +147,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                     <ul class="pagination  pull-right">
                                         <?php if ($page > 1): ?>
                                             <li class="prev"><a
-                                                    href="view.php?page=<?php echo $page - 1 ?>">Prev</a></li>
+                                                        href="view.php?page=<?php echo $page - 1 ?>">Prev</a></li>
                                         <?php endif; ?>
 
                                         <?php if ($page > 3): ?>
@@ -124,39 +157,44 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
 
                                         <?php if ($page - 2 > 0): ?>
                                             <li class="page"><a
-                                                href="view.php?page=<?php echo $page - 2 ?>"><?php echo $page - 2 ?></a>
+                                                    href="view.php?page=<?php echo $page - 2 ?>"><?php echo $page - 2 ?></a>
                                             </li><?php endif; ?>
                                         <?php if ($page - 1 > 0): ?>
                                             <li class="page"><a
-                                                href="view.php?page=<?php echo $page - 1 ?>"><?php echo $page - 1 ?></a>
+                                                    href="view.php?page=<?php echo $page - 1 ?>"><?php echo $page - 1 ?></a>
                                             </li><?php endif; ?>
 
                                         <li class="currentpage"><a
-                                                href="view.php?page=<?php echo $page ?>"><?php echo $page ?></a>
+                                                    href="view.php?page=<?php echo $page ?>"><?php echo $page ?></a>
                                         </li>
 
                                         <?php if ($page + 1 < ceil($total_pages / $num_results_on_page) + 1): ?>
                                             <li class="page"><a
-                                                href="view.php?page=<?php echo $page + 1 ?>"><?php echo $page + 1 ?></a>
+                                                    href="view.php?page=<?php echo $page + 1 ?>"><?php echo $page + 1 ?></a>
                                             </li><?php endif; ?>
                                         <?php if ($page + 2 < ceil($total_pages / $num_results_on_page) + 1): ?>
                                             <li class="page"><a
-                                                href="view.php?page=<?php echo $page + 2 ?>"><?php echo $page + 2 ?></a>
+                                                    href="view.php?page=<?php echo $page + 2 ?>"><?php echo $page + 2 ?></a>
                                             </li><?php endif; ?>
 
                                         <?php if ($page < ceil($total_pages / $num_results_on_page) - 2): ?>
                                             <li class="dots">...</li>
                                             <li class="end"><a
-                                                    href="view.php?page=<?php echo ceil($total_pages / $num_results_on_page) ?>"><?php echo ceil($total_pages / $num_results_on_page) ?></a>
+                                                        href="view.php?page=<?php echo ceil($total_pages / $num_results_on_page) ?>"><?php echo ceil($total_pages / $num_results_on_page) ?></a>
                                             </li>
                                         <?php endif; ?>
 
                                         <?php if ($page < ceil($total_pages / $num_results_on_page)): ?>
                                             <li class="next"><a
-                                                    href="view.php?page=<?php echo $page + 1 ?>">Next</a></li>
+                                                        href="view.php?page=<?php echo $page + 1 ?>">Next</a></li>
                                         <?php endif; ?>
                                     </ul>
                                 <?php endif; ?>
+                            </div>
+                            <div id="myModal" class="modal">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="img01">
+                                <div id="caption"></div>
                             </div>
                         </div>
                     </div>
@@ -180,35 +218,6 @@ if (@$_SESSION['success']) {
 }
 ?>
 <script type="text/javascript">
-    $(document).on("click", "[data-column]", function () {
-        console.log("sdf");
-        var button = $(this),
-            header = $(button.data("column")),
-            table = header.closest("table"),
-            index = header.index() + 1, // convert to CSS's 1-based indexing
-            selector = "tbody tr td:nth-child(" + index + ")",
-            column = table.find(selector).add(header);
-
-        column.toggleClass("hidden");
-    });
-
-    $(function () {
-        $('select').change(function () {
-            var button = $(this).find('option:selected'),
-                header = $(button.data("column")),
-                table = header.closest("table"),
-                index = header.index() + 1,
-                selector = "tbody tr td:nth-child(" + index + ")",
-                column = table.find(selector).add(header);
-
-            column.toggleClass("hidden")
-            /*if (column.toggleClass("hidden")){
-                column.toggleClass("")
-            }else{
-                column.toggleClass("hidden");
-            }*/
-        }).change();
-    });
 
     function deleteFunction(id) {
         var id = id;
@@ -242,6 +251,20 @@ if (@$_SESSION['success']) {
 
             }
         })
+    }
+
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+
+    function imageFunction(id) {
+
+        modal.style.display = "block";
+        modalImg.src = id;
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        modal.style.display = "none";
     }
 </script>
 </body>
