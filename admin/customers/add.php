@@ -29,10 +29,9 @@ if(@$_POST['submit']) {
     $city = mysqli_real_escape_string($con, $_POST['city']);
     $post_code = mysqli_real_escape_string($con, $_POST['post_code']);
     $address = mysqli_real_escape_string($con, $_POST['address']);
-
-    $query = "INSERT INTO `customers`(`username`,`password`,`email`,`name`,`contact_number`,`custom_id`,`company_name`,`country`,`state`,`city`,`post_code`,`address`,`creator_type`) 
-
-VALUES('$username','$password','$email','$name','$contact_number','$custom_id','$company_name','$country','$state','$city','$post_code','$address','1')";
+    $api_key = bin2hex(random_bytes(32));
+    $query = "INSERT INTO `customers`(`username`,`password`,`email`,`name`,`contact_number`,`custom_id`,`company_name`,`country`,`state`,`city`,`post_code`,`address`,`creator_type`,`api_key`) 
+VALUES('$username','$password','$email','$name','$contact_number','$custom_id','$company_name','$country','$state','$city','$post_code','$address','1','$api_key')";
 
 
     if ($con->query($query) === TRUE) {
@@ -180,12 +179,7 @@ VALUES('$username','$password','$email','$name','$contact_number','$custom_id','
             error:function (){}
         });
     }
-</script>
 
-
-
-
-<script type="text/javascript">
     var $input = $('input:text'),
         $register = $('#submit');
 

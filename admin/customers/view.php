@@ -51,8 +51,8 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <select id="mySelect">
-                                    <option>Select</option>
+                                <select id="mySelect" class="form-control">
+                                    <option selected disabled>Column Hide/Show</option>
                                     <option data-column="#id" value="gh">ID</option>
                                     <option data-column="#name">name</option>
 
@@ -64,9 +64,10 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                     <option data-column="#state">State</option>
                                     <option data-column="#post_code">Postal Code</option>
                                     <option data-column="#address">Address</option>
-
+                                    <option data-column="#api_key">Api Key</option>
                                     <option data-column="#label">label</option>
                                 </select>
+                                <br>
 
                                 <!--                                <button type="button" data-column="#id">Hide/show 1st</button>-->
                                 <!--                                <button type="button" data-column="#name">Hide/show Station</button>-->
@@ -78,7 +79,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                 <!--                                <button type="button" data-column="#label">Hide/show Label</button>-->
 
 
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" style="table-layout: fixed">
                                     <thead>
                                     <style type="text/css">
                                         .hidden {
@@ -86,7 +87,7 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                         }
                                     </style>
                                     <tr>
-                                        <th style="width: 10px" id="id">#</th>
+                                        <th  id="id">#</th>
                                         <th id="name">Customer Name</th>
                                         <th id="email">Email</th>
                                         <th id="c_number">Contact Number</th>
@@ -96,7 +97,8 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                         <th id="state">State</th>
                                         <th id="post_code">Postal Code</th>
                                         <th id="address">Address</th>
-                                        <th id="label" style="width: 40px">Label</th>
+                                        <th id="api_key">Api Key</th>
+                                        <th id="label">Label</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -114,9 +116,12 @@ include(ROOT_PATH . "admin/includes/head.php"); ?>
                                             <td><?php echo $row['state']; ?></td>
                                             <td><?php echo $row['post_code']; ?></td>
                                             <td><?php echo $row['address']; ?></td>
+                                            <td><?php echo $row['api_key']; ?></td>
                                             <td>
                                                 <a href="edit.php?id=<?php echo $row['id']; ?>"><span
                                                             class="badge bg-info">Edit</span></a>
+                                                <a href="key-regenerate.php?id=<?php echo $row['id']; ?>"><span
+                                                            class="badge bg-info">Key Regenerate</span></a>
                                                 <a href="#" id="<?php echo $row['id']; ?>"
                                                    onclick="deleteFunction(this.id)"><span class="badge bg-danger">Delete</span></a>
                                             </td>
